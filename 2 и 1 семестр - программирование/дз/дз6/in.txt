@@ -1,0 +1,6 @@
+1234 dollar 45
+1236 euro 65
+1237 yek 35
+1238 dollar 65
+12901 euro 4
+8912 dollar 68
