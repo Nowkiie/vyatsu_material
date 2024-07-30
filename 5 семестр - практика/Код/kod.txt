@@ -1,0 +1,226 @@
+int load = 7;
+// CE pin 15
+int clockEnablePin = 4;
+// Q7 pin 7
+int dataIn = 5;
+// CP pin 2
+int clockIn = 6;
+
+int regim=2;
+
+int ledGreen=11;
+int ledYellow=12;
+int ledRed=13;
+
+bool flag=true;
+
+int s1;
+int number=1;
+const int latchPin=9;
+const int dataPin=8;
+const int clockPin= 10;
+void setup()
+{
+  // Setup Serial Monitor
+  Serial.begin(9600);
+ 
+  // Setup 74HC165 connections
+  pinMode(load, OUTPUT);
+  pinMode(clockEnablePin, OUTPUT);
+  pinMode(clockIn, OUTPUT);
+  pinMode(dataIn, INPUT);
+
+  //setup 74HC595 connections
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+
+ //setup dip and led
+  pinMode(regim, INPUT);
+  pinMode(ledGreen, OUTPUT);
+  pinMode(ledYellow, OUTPUT);
+  pinMode(ledRed, OUTPUT);
+}
+
+void diagnostic()
+{
+   // Write pulse to load pin
+  digitalWrite(load, LOW);
+  delayMicroseconds(5);
+  digitalWrite(load, HIGH);
+  delayMicroseconds(5);
+ 
+  // Get data from 74HC165
+  digitalWrite(clockIn, HIGH);
+  digitalWrite(clockEnablePin, LOW);
+  byte incoming = shiftIn(dataIn, clockIn, LSBFIRST);
+  digitalWrite(clockEnablePin, HIGH);
+ 
+  // Print to serial monitor
+  Serial.print("Pin States:\r\n");
+  Serial.println(incoming, DEC);
+
+  digitalWrite(latchPin, LOW);
+  shiftOut(dataPin, clockPin, LSBFIRST, incoming);
+  digitalWrite(latchPin, HIGH);
+  
+  delay(200);
+}
+
+
+byte check(byte data)
+{
+  
+      digitalWrite(latchPin, LOW);
+      shiftOut(dataPin, clockPin, LSBFIRST, data);
+      digitalWrite(latchPin, HIGH);
+
+      // Write pulse to load pin
+      digitalWrite(load, LOW);
+      delayMicroseconds(5);
+      digitalWrite(load, HIGH);
+      delayMicroseconds(5);
+ 
+      // Get data from 74HC165
+      digitalWrite(clockIn, HIGH);
+      digitalWrite(clockEnablePin, LOW);
+      byte incoming = shiftIn(dataIn, clockIn, LSBFIRST);
+      digitalWrite(clockEnablePin, HIGH);
+ 
+      // Print to serial monitor
+      //Serial.print("Pin States:\r\n");
+      //Serial.println(incoming, DEC);
+      delay(1000);
+     
+      return incoming;
+}
+
+byte check_occurocy()
+{
+  digitalWrite(load, LOW);
+  delayMicroseconds(5);
+  digitalWrite(load, HIGH);
+  delayMicroseconds(5);
+ 
+  // Get data from 74HC165
+  digitalWrite(clockIn, HIGH);
+  digitalWrite(clockEnablePin, LOW);
+  byte incoming = shiftIn(dataIn, clockIn, LSBFIRST);
+  digitalWrite(clockEnablePin, HIGH);
+  return incoming;
+}
+
+void loop()
+{
+ s1 = digitalRead(regim);
+ if (s1==1)
+ {
+    diagnostic();
+    number=1;
+    digitalWrite(ledGreen, LOW);
+    digitalWrite(ledRed, LOW);
+    digitalWrite(ledYellow, LOW);
+    flag=true;
+ }
+ else 
+ {
+     byte occ=check_occurocy();
+     if (occ!=0 && number==1)
+     {
+       digitalWrite(ledYellow, HIGH);
+       digitalWrite(ledGreen, LOW);
+       digitalWrite(ledRed, LOW);
+     }
+     else
+     {
+     digitalWrite(ledYellow, LOW);
+     switch(number)
+     {
+      // 
+       case 1:
+       {
+         byte incoming = check(0);
+         Serial.print("Pin States:\r\n");
+         Serial.println(incoming, DEC);
+         if (incoming==0 && flag==true)
+         {
+           flag=true;
+           digitalWrite(ledGreen, LOW);
+           digitalWrite(ledGreen, HIGH);
+          }
+         else 
+         {
+           flag=false;
+           digitalWrite(ledRed, HIGH);
+         }
+           number++;
+           break;
+       }
+     
+       case 2:
+       {
+         byte incoming = check(51);
+         Serial.print("Pin States:\r\n");
+         Serial.println(incoming, DEC);
+         if (incoming==51 && flag==true)
+        {
+         flag=true;
+         digitalWrite(ledGreen, HIGH);
+        }
+         else 
+        {
+         flag=false;
+         digitalWrite(ledGreen, LOW);
+         digitalWrite(ledRed, HIGH);
+        }
+         number++;
+         break;
+       }
+       
+       case 3:
+       {
+         byte incoming =check(204);
+         Serial.print("Pin States:\r\n");
+         Serial.println(incoming, DEC);
+         if (incoming==136 && flag==true)
+         {
+           flag=true;
+           digitalWrite(ledGreen, HIGH);
+         }
+         else 
+         {
+           flag=false;
+           digitalWrite(ledGreen, LOW);
+           digitalWrite(ledRed, HIGH);
+         }
+         number++;
+         break;
+       }
+       
+       case 4:
+       {
+         byte incoming =check(255);
+         Serial.print("Pin States:\r\n");
+         Serial.println(incoming, DEC);
+         if (incoming==221 && flag==true)
+         {
+           flag=true;
+           digitalWrite(ledGreen, HIGH);
+         }
+         else 
+         {
+           flag=false;
+           digitalWrite(ledGreen, LOW);
+           digitalWrite(ledRed, HIGH);
+          }
+         number++;
+         break;
+        }
+       default:
+       break; 
+     } //switch 
+   
+     } // else occ
+ 
+  }// else regim
+}// loop
