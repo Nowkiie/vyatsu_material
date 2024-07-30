@@ -1,0 +1,9 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 000CEH 000CFH LABA1_TEXT         CODE
+ 000D0H 0014DH 0007EH _DATA              DATA
+ 00150H 003A5H 00256H STACK              STACK
+
+Program entry point at 0000:0052
+

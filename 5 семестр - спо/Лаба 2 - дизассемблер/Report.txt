@@ -1,0 +1,116 @@
+Отчет по лабораторной работе по Системному ПО
+Тема: Исследование EXE файлов
+Вариант 38
+
+Задание 1. Заголовок EXE файла
+
+Макс. требуемый объем памяти      65535
+Мин. требуемый объем памяти       0
+Смещение Relocation Table         3EH
+Кол-во эл-тов в Relocation Table  1
+Кол-во параграфов в заголовке     32
+Смещение сегмента стека           19H
+Смещение сегмента кода            2
+Значение указателя команд         131H
+Длина загружаемой части           826
+
+Задание 2. Декодирование команд
+
+0131: mov ax, 0000h
+0134: mov ds, ax
+0136: mov es,ax
+0138: mov di, 0000h
+013B: mov al, 24h
+013D: scasb ax,es:[di]
+013E: jne byte ptr 0fdh
+0140: sub ax, 0002h
+0143: mov cx, di
+0145: sub cx, [di]
+0147: shr cx,1
+0149: xor si, si
+014B: mov al, ds:[si+00h]
+014F: mov bl, [di]
+0151: mov ds:[si+00h], bl
+0155: mov [di], al
+0157: inc si
+0158: dec di
+0159: loop 0f0h
+015B: mov ax, 4c00h
+015E: int 21h
+0160: Retf
+
+Задание 3. Описание действий
+
+0131: mov ax, 0000h
+  AX:=0000h
+
+0134: mov ds, ax
+  DS:=AX
+
+0136: mov es,ax
+  ES:=AX
+
+0138: mov di, 0000h
+  DI:=0000h
+
+013B: mov al, 24h
+  AL:=0024h
+
+013D: scasb ax,es:[di]
+  DI:=DI+0001h
+
+013E: jne byte ptr 0fdh
+
+0140: sub ax, 0002h
+  AX:=AX-0002h
+
+0143: mov cx, di
+  CX:=DI
+
+0145: sub cx, [di]
+  CX:=CX-[DI]
+
+0147: shr cx,1
+  CX:=CX shr 0001h
+
+0149: xor si, si
+  SI:=SI xor SI
+
+014B: mov al, ds:[si+00h]
+  AL:=[SI+D16]
+
+014F: mov bl, [di]
+  BL:=[DI]
+
+0151: mov ds:[si+00h], bl
+  [SI+D16]:=BL
+
+0155: mov [di], al
+  [DI]:=AL
+
+0157: inc si
+  SI:=SI+0001h
+
+0158: dec di
+  DI:=DI-0001h
+
+0159: loop 0f0h
+  CX:=CX-0001h
+
+015B: mov ax, 4c00h
+  AX:=4C00h
+
+015E: int 21h
+  SP:=SP-0002h
+  [SP]:=Flags
+  SP:=SP-0002h
+  [SP]:=CS
+  SP:=SP-0002h
+  [SP]:=IP
+
+0160: Retf
+  IP:=[SP]
+  SP:=SP+0002h
+  CS:=[SP]
+  SP:=SP+0002h
+
