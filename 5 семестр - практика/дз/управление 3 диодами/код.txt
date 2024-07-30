@@ -1,0 +1,66 @@
+int ledPin1 = 7;
+int ledPin2 = 8;
+int ledPin3 = 12;
+int switchPin = 2;
+
+int val;
+
+int state;
+int c;
+
+void setup()
+{
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+  pinMode(switchPin, INPUT);
+  digitalWrite(ledPin1, LOW);
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
+}
+
+void loop()
+{
+  state = digitalRead(switchPin);
+
+  if (state == HIGH && c == 0) // нажали кнопку
+  {
+    c = 1;
+  }
+  if (state == LOW && c == 1) // отпустили кнопку
+  {
+    val = ++val;
+    if (val == 4)
+    {
+      val = 0;
+    }
+    c = 0;
+  }
+
+  if (val == 0) // выключаем светодиоды
+  {
+    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin3, LOW);
+  }
+  if (val == 1) // Если мы кнопку 1 раз нажали и отпустили
+  {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin3, LOW);
+  }
+  if (val == 2) // Если мы кнопку 2 раз нажали и отпустили
+  {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, LOW);
+  }
+  if (val == 3) // Если мы кнопку 2 раз нажали и отпустили
+  {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+  }
+  delay(10);
+ 
+}
