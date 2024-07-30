@@ -1,0 +1,75 @@
+ System:
+
+a
+
+a -> b & d & f & g
+
+b -> c V (n & e)
+
+c -> s & p & h
+
+d -> q & (s V j)
+
+e -> m V (n & i)
+
+f -> m V k
+
+g -> (j & i) V s
+
+h -> s & n
+
+i -> l & p
+
+j -> r & q
+
+k -> p & s
+
+l -> q V o
+
+m -> s & (n V r)
+
+n -> r V q V p
+
+o -> q & r
+
+p -> s
+
+
+1. a
+2. ¬a v b
+3. ¬a v c
+4. ¬a v d
+5. ¬a v e
+6. ¬b v n v c
+7. ¬b v e v c
+8. ¬c v s
+9. ¬c v p
+10. ¬c v h
+11.  ¬d v s v q
+12.  ¬d v j v q
+13. ¬e v m v n
+14. ¬e v m v i
+15. ¬f v m V k
+16.  
+¬g v j v s
+17. ¬g v i v s
+18. ¬h v s
+19. ¬h v n
+20. ¬i v l
+21.¬i v p
+22. ¬j v r
+23. ¬j v q
+24. ¬k v s
+25. ¬k v p
+26. ¬l v q V o
+27. ¬m v s v n
+28. ¬m v s v r
+29. ¬n v r V q V p
+30. ¬o v q 
+31. ¬o v r
+32. ¬p v s
+
+
+
+
+

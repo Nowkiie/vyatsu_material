@@ -1,0 +1,13 @@
+from A0 to A1
+from A1 to A4
+from A4 to A3
+from A3 to P2
+from P2 to A5 (if true) or to P6 (if false)
+from A5 to P6
+from P6 to A2 (if true) or to P5 (if false)
+from P5 to P5 (if true) or to P4 (if false)
+from P4 to P3 (if true) or to A4 (if false)
+from P3 to P5 (if true) or to A6 (if false)
+from A6 to A2
+from A2 to P1
+from P1 to Ak (if true) or to A3 (if false)

@@ -1,0 +1,38 @@
+¬n v r V q V p       èíâåðñèÿ n & ¬r & ¬q & ¬p
+System
+1. a
+2. ¬a v b
+3. ¬a v c
+4. ¬a v d
+5. ¬a v e
+6. ¬b v n v c
+7. ¬b v e v c
+8. ¬c v s
+9. ¬c v p
+10. ¬c v h
+11.  ¬d v s v q
+12.  ¬d v j v q
+13. ¬e v m v n
+14. ¬e v m v i
+15. ¬f v m V k
+16.  
+¬g v j v s
+17. ¬g v i v s
+18. ¬h v s
+19. ¬h v n
+20. ¬i v l
+21.¬i v p
+22. ¬j v r
+23. ¬j v q
+24. ¬k v s
+25. ¬k v p
+26. ¬l v q V o
+27. ¬m v s v n
+28. ¬m v s v r
+29. ¬o v q 
+30. ¬o v r
+31. ¬p v s
+32. n
+33. ¬r
+34. ¬q
+35. ¬p
