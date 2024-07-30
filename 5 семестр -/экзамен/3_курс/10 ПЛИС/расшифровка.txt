@@ -1,0 +1,8 @@
+
+ПЛИС PAL (Programmable Array Logic)
+ПЛИС PLA (Programmable Logic Array)
+ПЛИС GAL (Generic Array Logic)
+
+
+ПЛИС ASIC (Application Specific IC)
+В русскоязычной терминологии  - БМК – базовый матричный кристалл, т.е. вентильная матрица с масочным программированием
