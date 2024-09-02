@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Администратор</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alef&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(0deg, rgb(248,213,70), white), rgb(248,224,126);color: var(--bs-orange);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="color: rgb(136,193,124);">Brand</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav" style="color: rgb(136,193,124);"><span class="visually-hidden" style="color: rgb(136,193,124);">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item" style="color: var(--bs-dark);"><a id="addli" class="nav-link invisible" href="autorization.html" style="color: var(--bs-dark);">--</a></li>
+                  <li class="nav-item"><a class="nav-link" href="home.html" style="color: var(--bs-dark);">Главная</a></li>
+                  <li class="nav-item" style="color: var(--bs-dark);"><a id="navauto" class="nav-link active" href="autorization.html" style="color: var(--bs-dark);">Выйти</a></li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page lanidng-page">
+        <section></section>
+        <section class="portfolio-block block-intro" style="width: 100%;height: 100%;background: #ffffff;">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">Заявки на работу</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">Отчеты водителей</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">Сотрудники</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                        <p>Заявки на работу</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <th>Номер телефона</th>
+                                        <th>Электронная почта</th>
+                                        <th>Сообщение</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="application_table">
+                                  <%
+                                  let ans_w = JSON.parse(work);
+                                  for (var i = 0; i < ans_w.length; i++) {
+                                    if (ans_w[i].flag.toString() == "false") { %>
+                                      <tr>
+                                        <td><%=ans_w[i].name%></td>
+                                        <td><%=ans_w[i].number%></td>
+                                        <td><%=ans_w[i].email%></td>
+                                        <td><%=ans_w[i].message%></td>
+                                        <td><button onclick ="dtnch(1, <%=ans_w[i].id%>)" id="report_button" >Просмотр</button></td>
+                                      </tr>
+                                    <% }
+                                  }
+                                  for (var i = 0; i < ans_w.length; i++) {
+                                    if (ans_w[i].flag.toString() == "true") { %>
+                                      <tr>
+                                        <td><%=ans_w[i].name%></td>
+                                        <td><%=ans_w[i].number%></td>
+                                        <td><%=ans_w[i].email%></td>
+                                        <td><%=ans_w[i].message%></td>
+                                        <td>Просмотрено</td>
+                                      </tr>
+                                    <% }
+                                  }%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <p>Отчеты водителей</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <th>Дата</th>
+                                        <th>Профиль</th>
+                                        <th>Машина</th>
+                                        <th>Пробег</th>
+                                        <th>Заправка</th>
+                                        <th>Дополнительные расходы</th>
+                                        <th>Сообщение</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="report_table">
+                                  <%
+                                  let ans_r = JSON.parse(report);
+                                  for (var i = 0; i < ans_r.length; i++) {
+                                    if (ans_r[i].flag.toString() == "false") { %>
+                                      <tr>
+                                        <td><%=ans_r[i].name%></td>
+                                        <td><%=ans_r[i].date%></td>
+                                        <td><%=ans_r[i].profil%></td>
+                                        <td><%=ans_r[i].car%></td>
+                                        <td><%=ans_r[i].mileage%></td>
+                                        <td><%=ans_r[i].station%></td>
+                                        <td><%=ans_r[i].expenses%></td>
+                                        <td><%=ans_r[i].message%></td>
+                                        <td><button onclick ="dtnch(2, <%=ans_r[i].id%>)" id="report_button" >Просмотр</button></td>
+                                      </tr>
+                                    <% }
+                                  }
+                                  for (var i = 0; i < ans_r.length; i++) {
+                                    if (ans_r[i].flag.toString() == "true") { %>
+                                      <tr>
+                                        <td><%=ans_r[i].name%></td>
+                                        <td><%=ans_r[i].date%></td>
+                                        <td><%=ans_r[i].profil%></td>
+                                        <td><%=ans_r[i].car%></td>
+                                        <td><%=ans_r[i].mileage%></td>
+                                        <td><%=ans_r[i].station%></td>
+                                        <td><%=ans_r[i].expenses%></td>
+                                        <td><%=ans_r[i].message%></td>
+                                        <td>Просмотрено</td>
+                                      </tr>
+                                    <% }
+                                  }%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <p>Сотрудники</p>
+                        <!--<button onclick="dtnch(3, -1)" id="useradd_button" >Добавить</button>-->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ФИО</th>
+                                        <th>Номер телефона</th>
+                                        <th>Дата рождения</th>
+                                        <th>Логин</th>
+                                        <th>Пароль</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="user_table">
+                                  <%
+                                  let ans_u = JSON.parse(user);
+                                  for (var i = 0; i < ans_u.length; i++) { %>
+                                      <tr>
+                                        <td><%=ans_u[i].name%></td>
+                                        <td><%=ans_u[i].phone%></td>
+                                        <td><%=ans_u[i].date%></td>
+                                        <td><%=ans_u[i].login%></td>
+                                        <td><%=ans_u[i].password%></td>
+                                      </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="mb-3"><button class="btn btn-primary" onclick="idd_click()" id="application" type="button">Обновить/</button></div>-->
+            </div>
+      </section>
+    </main>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/validate.js"></script>
+</body>
+
+</html>

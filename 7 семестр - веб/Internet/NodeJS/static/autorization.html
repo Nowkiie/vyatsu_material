@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alef&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(0deg, rgb(248,213,70), white), rgb(248,224,126);color: var(--bs-orange);">
+        <div class="container"><a class="navbar-brand logo" href="#" style="color: rgb(136,193,124);">Brand</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav" style="color: rgb(136,193,124);"><span class="visually-hidden" style="color: rgb(136,193,124);">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item" style="color: var(--bs-dark);"><a id="addli" class="nav-link invisible" href="autorization.html" style="color: var(--bs-dark);">--</a></li>
+                  <li class="nav-item"><a class="nav-link" href="home.html" style="color: var(--bs-dark);">Главная</a></li>
+                  <li class="nav-item" style="color: var(--bs-dark);"><a id="navauto" class="nav-link active" href="autorization.html" style="color: var(--bs-dark);">Авторизация</a></li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page hire-me-page"></main>
+    <section class="login-dark" style="background: url(&quot;assets/img/back3.jpg&quot;) center / auto no-repeat;">
+        <form method="post" style="width: 500px;background: rgb(255,248,233);">
+            <h2 class="visually-hidden">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="mb-3"><input class="form-control" type="email" id="inputlog" name="login" placeholder="*Логин" style="color: var(--bs-gray-900);" maxlength="25"></div>
+            <div class="mb-3" style="color: var(--bs-gray-900);"><input class="form-control" type="password" id="inputpas" name="password" placeholder="*Пароль" style="color: var(--bs-gray-900);" maxlength="25"></div>
+            <div id="messages_back" class="visible">
+              <small id="messages" style="color: var(--bs-red);font-weight: bold;font-family: Alef, sans-serif;"></small>
+            </div>
+            <div class="mb-3"><button onclick="a_btn_onclick()" class="btn btn-primary d-block w-100" id="a_btn" type="button" style="background: var(--bs-indigo);">Войти</button></div>
+            <!--<a class="forgot" href="new_person.html">Создать аккаунт</a>-->
+       </form>
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/validate.js"></script>
+
+</body>
+
+</html>

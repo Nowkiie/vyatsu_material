@@ -1,0 +1,61 @@
+ .myclass {
+  
+}
+
+ .u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 595px;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  margin: 31px auto 0;
+}
+
+.u-section-1 .u-image-1 {
+  width: 187px;
+  height: 187px;
+  background-image: url("images/6.png");
+  background-position: 50% 50%;
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-form-1 {
+  height: 205px;
+  width: 570px;
+  margin: 31px auto 0;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.u-section-1 .u-btn-2 {
+  border-style: none none solid;
+  font-weight: 700;
+  margin: -9px auto 33px;
+  padding: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-btn-1 {
+    letter-spacing: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+}
