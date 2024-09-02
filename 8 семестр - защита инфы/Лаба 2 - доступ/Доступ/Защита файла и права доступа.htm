@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0073)http://vsokovikov.narod.ru/New_MSDN_API/File_system/file_access_right.htm -->
+<HTML xmlns:mso = "urn:schemas-microsoft-com:office:office" xmlns:msdt = 
+"uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><HEAD><TITLE>Защита файла и права доступа</TITLE>
+<SCRIPT type=text/javascript>var y5_pageId = 6259; var y5_statId = 1646619739; document.write('<sc' + 'ript type="text/javascript" src="http://bs.yandex.ru/resource/narod_init.js?rnd=' + Math.round(Math.random() * 100000) + '"></sc' + 'ript>');</SCRIPT>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:Categories msdt:dt="string">Базовые понятия</mso:Categories>
+<mso:Approval_x0020_Level msdt:dt="string"></mso:Approval_x0020_Level>
+<mso:Assigned_x0020_To msdt:dt="string">Владимир Соковиков</mso:Assigned_x0020_To>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<META 
+content="Описание методики и особенностей защиты файлов от несанкционированного доступа" 
+name=description>
+<META 
+content="файловая система, том, каталог, файл, путь к файлу, NTFS, FAT, файловый объект, кластер, экстент" 
+name=keywords>
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR><!--vs-->
+<META content=FrontPage.Editor.Document name=ProgId></HEAD>
+<BODY background="Защита файла и права доступа.files/base.gif">
+<DIV 
+style="BACKGROUND: url(http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=narod_total/)"></DIV>
+<H2><FONT face=Arial color=#0000ff size=4>Защита файла и права 
+доступа&nbsp;</FONT></H2>
+<HR SIZE=4>
+<FONT size=2>
+<P><FONT face=Arial size=2>Поскольку файлы - это <FONT color=#0000ff>защищенные 
+объекты (securable objects)</FONT>, обращение&nbsp; к ним, регулируется моделью 
+управления доступом, которая руководит доступом ко всем другим защищенным 
+объектам в <B>Windows</B>. Подробное объяснение этой модели см. в главе <FONT 
+color=#0000ff>Управление доступом</FONT>.</FONT></P>
+<P><FONT face=Arial size=2>Вы можете установить <FONT color=#0000ff>дескриптор 
+безопасности (security descriptor)</FONT> для файла или каталога, когда 
+вызываете функцию <FONT color=#0000ff><B><A 
+href="http://vsokovikov.narod.ru/New_MSDN_API/Menage_files/fn_createfile.htm">CreateFile</A></B></FONT>, 
+<FONT color=#0000ff><B>CreateDirectory</B></FONT> или <FONT 
+color=#0000ff><B>CreateDirectoryEx</B></FONT>. Если Вы для параметра 
+<B><I>lpSecurityAttributes</I></B> определяете значение ПУСТО (NULL) , файл или 
+каталог получает заданный по умолчанию дескриптор безопасности. Списки контроля 
+доступа (<B>ACL</B>) в заданном по умолчанию дескрипторе безопасности для файла 
+или каталога наследуются от его каталога предыдущего уровня.</FONT></P>
+<TABLE cellPadding=5 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD width="100%"><FONT face=Arial size=2><FONT color=#000080><B>Обратите 
+      внимание!</B></FONT> на то, что заданный по умолчанию дескриптор 
+      безопасности назначается только тогда, когда файл или каталог недавно 
+      созданы, а не тогда, когда элемент переименован или 
+  перемещен.</FONT></TD></TR></TBODY></TABLE>
+<P><FONT face=Arial size=2>Чтобы извлечь&nbsp; дескриптор безопасности объекта 
+файла или каталога, вызовите функцию <FONT 
+color=#0000ff><B>GetNamedSecurityInfo</B></FONT> или <FONT 
+color=#0000ff><B>GetSecurityInfo</B></FONT>. Чтобы изменить дескриптор 
+безопасности объекта файла или каталога, вызовите функцию <FONT 
+color=#0000ff><B>SetNamedSecurityInfo</B></FONT> или <FONT 
+color=#0000ff><B>SetSecurityInfo</B></FONT>.</FONT></P>
+<P><FONT face=Arial size=2>Правильные права доступа для файлов и каталогов 
+включают в себя <FONT color=#0000ff>стандартные права доступа<B> 
+</B>(standard</FONT> <FONT face=Arial color=#0000ff>access rights)</FONT>&nbsp; 
+<FONT color=#000080><B>DELETE </B></FONT>(удаление), <FONT 
+color=#000080><B>READ_CONTROL</B></FONT> (управление чтением), <FONT 
+color=#000080><B>WRITE_DAC</B></FONT> (избирательный контроль за доступом к 
+записи) и <FONT color=#000080><B>WRITE_OWNER</B></FONT> (монопольная запись). 
+Нижеследующая таблица перечисляет права доступа, которые являются специфическими 
+для&nbsp; определенных файлов и каталогов.</FONT></P><!--vs--></FONT>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=5 width="90%" bgColor=#e6ffff>
+  <TBODY>
+  <TR vAlign=top>
+    <TH align=left width="43%"><FONT face=Arial size=3><B>Права 
+      доступа</B></FONT></TH>
+    <TH align=left width="57%"><FONT face=Arial 
+    size=3><B>Описание</B></FONT></TH></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_ADD_FILE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для каталога, право создавать файл 
+      в каталоге.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_ADD_SUBDIRECTORY</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для каталога, право создавать 
+      подкаталог в каталоге.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_ALL_ACCESS</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Все возможные права доступа для 
+      файла.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_APPEND_DATA</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для объекта файла, право 
+      добавлять&nbsp; данные к файлу. Для объекта каталога, право создавать 
+      подкаталог.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_CREATE_PIPE_INSTANCE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для именованного канала, право 
+      создавать канал.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_DELETE_CHILD</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для каталога, право удалять 
+      каталог и все файлы содержащиеся в нем, включая файлы только для 
+      чтения.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_EXECUTE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для файла собственного кода 
+      (данной ЭВМ), право исполнять файл. Это право доступа, данное скриптам 
+      может заставить скрипт быть исполняемым, в зависимости от интерпретатора 
+      скрипта.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_LIST_DIRECTORY</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для каталога, право перечислять 
+      состав каталога.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_READ_ATTRIBUTES</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Право читать атрибуты 
+    файла.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_READ_DATA</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для файлового объекта, право 
+      читать соответствующие данные файла. Для объекта каталога, право читать 
+      соответствующие данные каталога.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_READ_EA</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Право читать дополнительные 
+      атрибуты файла.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_TRAVERSE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для каталога, право проходить 
+      каталог. По умолчанию, пользователям назначается <FONT 
+      color=#0000ff>привилегия</FONT> <B><FONT 
+      color=#800000>BYPASS_TRAVERSE_CHECKING</FONT></B>, которая игнорирует 
+      <FONT color=#0000ff>право доступа</FONT> <FONT 
+      color=#800000><B>FILE_TRAVERSE</B></FONT>. Дополнительную информацию 
+      см.&nbsp; ниже в замечаниях в этой статье.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_WRITE_ATTRIBUTES</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Право записывать атрибуты в 
+      файл.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_WRITE_DATA</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Для файлового объекта, право 
+      записывать данные в файл. Для объекта каталога, право создавать файл в 
+      каталоге.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_WRITE_EA</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Право записывать дополнительные 
+      атрибуты в файл.</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>STANDARD_RIGHTS_READ</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Включает в себя флажок <B><FONT 
+      color=#800000>READ_CONTROL</FONT></B>, который является правом читать 
+      информацию в дескрипторе безопасности объекта каталога или файла. Он не 
+      включает информацию в системный список контроля доступа 
+      (<B>SACL</B>).</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>STANDARD_RIGHTS_WRITE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Включает в себя флажок <B><FONT 
+      color=#800000>WRITE_CONTROL</FONT></B>, который является правом записать в 
+      дескриптор безопасности объекта каталога. Он не включает информацию в 
+      системный список контроля доступа (<B>SACL</B>).</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>SYNCHRONIZE</FONT></B></TD>
+    <TD width="57%"><FONT face=Arial size=2>Право определять дескриптор файла 
+      в одной из функций ожидания. Однако для асинхронных действий файлового 
+      ввода - вывода (<B>I/O</B>), вам следует ждать обработки события в 
+      структуре <B><FONT color=#0000ff><A 
+      href="http://vsokovikov.narod.ru/New_MSDN_API/Synchronization/str_overlapped.htm">OVERLAPPED</A></FONT></B>, 
+      а не использовать дескриптор файла для 
+синхронизации.</FONT></TD></TR></TBODY></TABLE></CENTER></DIV><FONT size=2>
+<P><FONT face=Arial size=2>Ниже перечислены <FONT color=#0000ff>универсальные 
+права доступа (generic access rights)</FONT> для файлов и 
+каталогов.</FONT></P></FONT>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=5 width="90%" bgColor=#f7ffe3>
+  <TBODY>
+  <TR>
+    <TH align=left width="43%"><FONT face=Arial>Права доступа</FONT></TH>
+    <TH align=left width="57%"><FONT face=Arial>Описание</FONT></TH></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>GENERIC_EXECUTE</FONT></B></TD>
+    <TD width="57%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_READ_ATTRIBUTES<BR>STANDARD_RIGHTS_EXECUTE<BR>SYNCHRONIZE</FONT></B></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>GENERIC_READ</FONT></B></TD>
+    <TD width="57%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_READ_ATTRIBUTES<BR>FILE_READ_DATA<BR>FILE_READ_EA<BR>STANDARD_RIGHTS_READ<BR>SYNCHRONIZE</FONT></B></TD></TR>
+  <TR vAlign=top>
+    <TD width="43%"><B><FONT face=Arial color=#800000 
+      size=2>GENERIC_WRITE</FONT></B></TD>
+    <TD width="57%"><B><FONT face=Arial color=#800000 
+      size=2>FILE_APPEND_DATA<BR>FILE_WRITE_ATTRIBUTES<BR>FILE_WRITE_DATA<BR>FILE_WRITE_EA<BR>STANDARD_RIGHTS_WRITE<BR>SYNCHRONIZE</FONT></B></TD></TR></TBODY></TABLE></CENTER></DIV><FONT 
+size=2>
+<P><FONT face=Arial size=2></FONT>&nbsp;</P><B><FONT face=Arial>Windows 
+Me/98/95:&nbsp;</FONT></B><FONT face=Arial>&nbsp;Ниже перечислены единственные 
+поддерживаемые права доступа: <B><FONT color=#800000>DELETE</FONT></B>, <B><FONT 
+color=#800000>FILE_WRITE_ATTRIBUTES</FONT></B>, <B><FONT 
+color=#800000>GENERIC_READ</FONT></B> и <B><FONT 
+color=#800000>GENERIC_WRITE</FONT></B>.</FONT> 
+<P><FONT face=Arial size=2><B>Windows</B> сравнивает затребованные права доступа 
+и информацию в маркере доступа потока с информацией в дескрипторе безопасности 
+объекта каталога или файле. Если сравнение не запрещает все затребованные права 
+доступа, которые должны быть предоставленными, дескриптор объекта возвращается 
+потоку, и права доступа предоставляются. За подробной информацией об этом 
+процессе обратитесь к статье <FONT color=#0000ff>Взаимодействие между потоками и 
+защищенными объектами</FONT>.</FONT></P><!--vs-->
+<P><FONT face=Arial size=2>По умолчанию, разрешение на доступ к файлу или 
+каталогу управляется строго списками контроля доступа (<B>ACL</B>) в дескрипторе 
+безопасности, связанным с этим файлом или каталогом. В частности, дескриптор 
+безопасности родительского каталога не используется, чтобы управлять доступом к 
+любому дочернему файлу или каталогу. <FONT color=#0000ff>Право доступа</FONT> 
+<FONT color=#800000><B>FILE_TRAVERSE</B></FONT> может быть реализовано, путем 
+удаления <FONT color=#0000ff>привилегии</FONT> <FONT 
+color=#800000><B>BYPASS_TRAVERSE_CHECKING</B></FONT> у пользователей. Это не 
+рекомендуется в общем случае, так как многие программы неправильно&nbsp; 
+обрабатывают ошибки обхода каталога. Главное использование&nbsp; права доступа 
+<FONT color=#800000><B>FILE_TRAVERSE</B></FONT> в каталогах - это включить 
+соответствие некоторому стандарту <B>POSIX</B>&nbsp; <B>IEEE</B> и <B>ISO</B>, 
+когда требуется способность к взаимодействию с системами <B>Unix</B>.</FONT></P>
+<P><FONT face=Arial size=2>Модель системы безопасности <B>Windows</B> 
+предусматривает для дочернего каталога способ наследования или предотвращения 
+наследования, одного или нескольких элементов списка контроля доступа 
+(<B>ACE</B>)&nbsp; в дескрипторе безопасности родительской директории. Каждый 
+элемент списка контроля доступа (<B>ACE</B>) содержит информацию, которая 
+обуславливает, как эти элементы могут быть унаследованы, и будут ли они 
+воздействовать на наследующий объект каталога. Например, некоторые 
+унаследованные <B>ACE</B> управляют доступом к унаследованному объекту каталога 
+и они называются <B><FONT color=#800080><I>рабочими элементами списка контроля 
+доступа (ACE) (effective ACEs)</I></FONT></B>. Все другие элементы списка 
+контроля доступа (<B>ACE</B>) называются <I><B><FONT color=#800080>только 
+унаследованными ACE (inherit-only ACEs</FONT></B></I><FONT 
+color=#800080><B><I>).</I></B></FONT></FONT></P>
+<P><FONT face=Arial size=2>Модель системы безопасности <B>Windows</B> также 
+осуществляет и автоматическую наследственность элементов списка контроля доступа 
+(<B>ACE</B>) дочерними объектами согласно <FONT color=#0000ff>правилам 
+наследования ACE (<I>ACE inheritance rules)</I></FONT>. Эта автоматическая 
+наследственность, наряду с наследуемой информацией в каждом <B>ACE</B>, 
+устанавливает какие ограничения защиты передаются вниз в иерархии 
+каталогов.</FONT></P>
+<TABLE cellPadding=5 width="100%" border=1>
+  <TBODY>
+  <TR>
+    <TD width="100%"><FONT size=2>
+      <P><FONT face=Arial size=2><FONT color=#000080><B>Обратите внимание! 
+      </B></FONT>на то, что Вы не можете использовать отказ в доступе 
+      <B>ACE</B>, чтобы не допустить обращения к файлу только для <B><FONT 
+      color=#800000>GENERIC_READ</FONT></B>, или только для <FONT 
+      color=#800000><B>GENERIC_WRITE</B></FONT>. Для таких объектов файлов это 
+      происходит потому, что универсальные схемы набора прав и для <FONT 
+      color=#800000><B>GENERIC_READ</B></FONT>, и для <FONT 
+      color=#800000><B>GENERIC_WRITE</B></FONT> включают в себя&nbsp; право 
+      доступа <FONT color=#800000><B>SYNCHRONIZE</B></FONT>. Если элемент списка 
+      контроля доступа (<B>ACE</B>) отказывает, то <FONT 
+      color=#800000><B>GENERIC_WRITE</B></FONT> обращается опекуну, а опекун 
+      запрашивает доступ <FONT color=#800000><B>GENERIC_READ</B></FONT>, так что 
+      запрос завершится ошибкой, потому что потенциально он включает в себя 
+      доступ <FONT color=#800000><B>SYNCHRONIZE</B></FONT>, в котором косвенно 
+      был отказ <B>ACE</B>, и наоборот. Вместо того, чтобы использовать отказ в 
+      доступе <B>ACE</B>, используйте разрешение доступа <B>ACE</B>, чтобы явно 
+      дать возможность использовать разрешенные права 
+    доступа.</FONT></P></FONT></TD></TR></TBODY></TABLE>
+<P><FONT face=Arial size=2>Другим способом управления доступом к объектам 
+хранения данных является шифрование. Реализацией шифрования файловой системы в 
+<B>Windows</B> является технология <B><FONT color=#000080>Encrypted</FONT></B> 
+<FONT color=#000080><B>File</B> <B>System</B> - <B>Шифрующей</B> <B>файловой</B> 
+<B>системы</B></FONT>, или <B>EFS</B>. <B>EFS</B> шифрует только файлы, а не 
+каталоги. Преимущество шифрования заключается в том, что оно предусматривает 
+дополнительную защиту файлов, которая применяется для аудио- и видеоинформации, 
+а не для всей файловой системы, и стандартную архитектуру контроля доступа 
+<B>Windows</B>.За подробной информацией о шифровании файла, обратитесь к 
+статье&nbsp; <FONT color=#0000ff><A 
+href="http://vsokovikov.narod.ru/New_MSDN_API/Menage_files/file_encryption.htm"><B>Шифрование 
+файла</B></A></FONT>.</FONT></P>
+<P><FONT face=Arial size=2>В большинстве случаев, способность читать и 
+записывать параметры настройки защиты объекта файла или каталога ограничивается 
+процессами режима ядра. Несомненно , что Вы не&nbsp; хотели бы в каком-либо 
+процессе пользователя обнаружить изменения в монопольном использовании или 
+ограничение доступа к вашему собственному файлу или каталогу. Однако, резервное 
+копирование приложения не получило бы возможность закончить свое задание по 
+копированию вашего файла, если ограничения доступа, которые Вы поместили в своем 
+файле или каталоге, не позволяют процессу пользовательского 
+(непривилегированного) режима приложения читать его. Резервное копирование 
+приложения должно быть в состоянии отменить параметры настройки защиты объектов 
+файла и&nbsp; каталога, чтобы гарантировать полную резервную копию. Точно так 
+же, если резервное копирование приложения пытается записывать резервную копию 
+вашего файла поверх постоянно находящейся на диске копии, а Вы явно не даете 
+права доступа к записи&nbsp; резервному прикладному процессу, операция 
+восстановления не сможет завершиться. Также и в данном случае, резервное 
+копирование приложения должно получить возможность отменить параметры настройки 
+управления доступом в вашем файле.</FONT></P><!--vs--></FONT>
+<P><FONT face=Arial size=2>Привилегии доступа <FONT 
+color=#800000><B>SE_BACKUP_NAME</B></FONT> и <FONT 
+color=#800000><B>SE_RESTORE_NAME</B></FONT>&nbsp; были специально созданы, чтобы 
+обеспечить эту способность резервному копированию приложения. Если эти права 
+доступа предоставляются и включаются в маркере доступа резервного прикладного 
+процесса, тогда он может вызвать функцию <B>CreateFile</B>, чтобы открыть ваш 
+файл или каталог для резервного копирования, устанавливая стандартное право 
+доступа <FONT color=#800000><B>READ_CONTROL</B></FONT>&nbsp; как значение 
+параметра <B><I>dwDesiredAccess</I></B> в ней. Однако, чтобы идентифицировать 
+вызывающий процесс как&nbsp; процесс резервирования, вызов&nbsp; 
+<B>CreateFile</B> должен включать в себя флажок <FONT 
+color=#800000><B>FILE_FLAG_BACKUP_SEMANTICS</B></FONT> в параметре 
+<B><I>dwFlagsAndAttributes</I></B> . Полный синтаксис вызова функции - 
+ниже:</FONT></P>
+<TABLE cellSpacing=0 cellPadding=10 width="100%" bgColor=#f7f4dd border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+      <BLOCKQUOTE><PRE>hFile = <B>CreateFile</B>(fileName,
+            <B>READ_CONTROL</B>,
+            0,
+            NULL,
+            <B>OPEN_EXISTING</B>,
+            <B>FILE_FLAG_BACKUP_SEMANTICS</B>,
+            NULL);</PRE></BLOCKQUOTE></TD></TR></TBODY></TABLE><FONT size=2>
+<P><FONT face=Arial>Это даст возможность процессу резервирования 
+приложения&nbsp; открывать ваш файл и отменять стандартную проверку защиты. 
+Чтобы восстановить ваш файл, резервное копирование приложения должно 
+использовать нижеследующий синтаксис вызова <B>CreateFile</B> при открытии, в 
+который будет произведена запись.</FONT></P></FONT>
+<TABLE cellSpacing=0 cellPadding=10 width="100%" bgColor=#f7f4dd border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+      <BLOCKQUOTE><PRE>hFile = <B>CreateFile</B>(fileName,
+            <B>WRITE_OWNER|WRITE_DAC</B>,
+            0,
+            NULL,
+            <B>CREATE_ALWAYS</B>,
+            <B>FILE_FLAG_BACKUP_SEMANTICS</B>,
+            NULL);
+</PRE></BLOCKQUOTE></TD></TR></TBODY></TABLE><FONT size=2>
+<P><FONT face=Arial>Есть ситуации, когда резервное копирование приложения должно 
+быть в состоянии изменить параметры настройки управления доступом к файлу или 
+каталогу. Примером этого является, когда параметры настройки управления доступом 
+к постоянно находящейся на диске копии файла или каталога отличаются от 
+резервной копии. Это случается тогда, если эти параметры настройки изменялись 
+после того, как файл или каталог были резервирован или, если он был 
+испорчен.</FONT></P>
+<P><FONT face=Arial>Флажок <FONT 
+color=#800000><B>FILE_FLAG_BACKUP_SEMANTICS</B></FONT>, устанавливаемый при 
+вызове <B>CreateFile</B> дает&nbsp; разрешение процессу резервирования 
+приложения читать параметры настройки контроля доступа файла или каталога. С 
+этим разрешением, процесс резервирования приложения может тогда вызвать функции 
+<B><FONT color=#0000ff>GetKernelObjectSecurity</FONT></B> и <FONT 
+color=#0000ff><B>SetKernelObjectSecurity</B></FONT>, чтобы прочитать, а затем 
+сбросить параметры настройки контроля доступа.</FONT></P>
+<P><FONT face=Arial>Если резервное копирование приложения должно иметь доступ к 
+параметрам <FONT color=#0000ff>настройки управления доступом</FONT> системного 
+уровня, флажок в параметре <B><I>dwDesiredAccess</I></B>, передаваемый в 
+<B>CreateFile</B>,&nbsp; должен быть установлен в значение <FONT 
+color=#800000><B>ACCESS_SYSTEM_SECURITY</B></FONT>.</FONT></P>
+<P><FONT face=Arial>Резервное копирование приложения вызывает функцию <FONT 
+color=#0000ff><B>BackupRead</B></FONT>, чтобы читать файлы и каталоги, заданные 
+для операции восстановления, а <FONT color=#0000ff><B>BackupWrite</B></FONT>, 
+чтобы записать их.</FONT></P></FONT>
+<DIV align=center>
+<CENTER>
+<TABLE width="25%" bgColor=#d3d6a7 border=2>
+  <TBODY>
+  <TR><FONT face=Arial size=2>
+    <TD align=middle width="100%"><FONT face=Arial color=#0000ff size=2><B><A 
+      href="http://vsokovikov.narod.ru/New_MSDN_API/File_system/ogl_flsyst.htm">Назад 
+      в оглавление темы</A></B></FONT></TD></FONT></TR>
+  <TR><FONT face=Arial size=2>
+    <TD align=middle width="100%"><FONT face=Arial color=#0000ff size=2><B><A 
+      href="http://vsokovikov.narod.ru/New_MSDN_API/File_system/main_flsys.htm">На 
+      главную страницу 
+темы</A></B></FONT></TD></FONT></TR></TBODY></TABLE></CENTER></DIV><FONT 
+color=#0000c0 size=1>
+<DIV class=itfBorder><!--webbot bot="Timestamp" S-Type="EDITED" S-Format="8.03.2004 15:58 ©Copyright V. Sokovikov" startspan -->8.03.2004 
+15:58 ©Copyright V. Sokovikov<!--webbot bot="Timestamp" i-checksum="31468" endspan --> </DIV></FONT><!--vs--></BODY></HTML>
