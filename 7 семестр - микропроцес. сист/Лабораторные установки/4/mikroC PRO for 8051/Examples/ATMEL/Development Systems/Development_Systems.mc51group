@@ -1,0 +1,16 @@
+[PROJECTS]
+Count=12
+Project0=Easy8051v6\ADC (SPI)\ADC.mcp51
+Project1=Easy8051v6\Button\Button.mcp51
+Project2=Easy8051v6\Glcd\Glcd.mcp51
+Project3=Easy8051v6\Keypad_Test\Keypad_Test.mcp51
+Project4=Easy8051v6\Lcd\Lcd.mcp51
+Project5=Easy8051v6\Led Blinking\LED_Blinking.mcp51
+Project6=Easy8051v6\Led Blinking\LED_Curtain.mcp51
+Project7=Easy8051v6\One Wire\One_Wire.mcp51
+Project8=Easy8051v6\Port Expander\PortExpander.mcp51
+Project9=Easy8051v6\Serial LCD (COG 2x16)\Serial_LCD.mcp51
+Project10=Easy8051v6\Seven Segment Display\Seven_Segment_Display.mcp51
+Project11=Easy8051v6\Uart\UART.mcp51
+[ActiveProject]
+Index=0

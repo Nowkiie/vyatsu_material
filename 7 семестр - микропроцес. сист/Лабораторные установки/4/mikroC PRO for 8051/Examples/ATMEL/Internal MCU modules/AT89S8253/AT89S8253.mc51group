@@ -1,0 +1,8 @@
+[PROJECTS]
+Count=4
+Project0=EEPROM in MCU\Eeprom.mcp51
+Project1=External Interrupt\Ext_Interrupt.mcp51
+Project2=Timer1 Interrupt\Timer1_Interrupt.mcp51
+Project3=WDT\WatchDog_Timer.mcp51
+[ActiveProject]
+Index=0

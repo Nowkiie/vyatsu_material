@@ -1,0 +1,19 @@
+[PROJECTS]
+Count=15
+Project0=C math\C_math.mcp51
+Project1=C stdlib\C_stdlib.mcp51
+Project2=C string\C_string.mcp51
+Project3=C type\C_type.mcp51
+Project4=Conversions\Conversions.mcp51
+Project5=Manchester\Receiver\Manchester_Receiver.mcp51
+Project6=Manchester\Transmitter\Manchester_Transmitter.mcp51
+Project7=Print Out\PrintOut.mcp51
+Project8=PS2 Keyboard\PS2.mcp51
+Project9=Soft UART\Soft_UART.mcp51
+Project10=Sound\Sound.mcp51
+Project11=Sprintf\Sprintf.mcp51
+Project12=Sprinti\Sprinti.mcp51
+Project13=Sprintl\Sprintl.mcp51
+Project14=Time\Time_Demo.mcp51
+[ActiveProject]
+Index=0

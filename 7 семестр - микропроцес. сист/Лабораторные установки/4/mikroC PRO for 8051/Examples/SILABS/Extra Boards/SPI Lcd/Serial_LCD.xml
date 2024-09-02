@@ -1,0 +1,13 @@
+<Serial_LCD>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/display/serial-lcd-adapter/</Url>
+		<Image>SPI LCD 2x16 adapter.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</Serial_LCD>

@@ -1,0 +1,13 @@
+<ds1820>
+	<Attributes>
+		<Url></Url>
+		<Image>big_8051_ds1820.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick></OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</ds1820>

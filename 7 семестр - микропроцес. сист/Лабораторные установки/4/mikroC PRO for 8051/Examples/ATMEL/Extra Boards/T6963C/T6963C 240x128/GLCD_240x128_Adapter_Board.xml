@@ -1,0 +1,13 @@
+<GLCD_240x128_Adapter_Board>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/display/glcd-240x128-adapter/</Url>
+		<Image>GLCD T6963C 240x128 adapter.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</GLCD_240x128_Adapter_Board>

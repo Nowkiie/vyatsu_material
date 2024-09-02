@@ -1,0 +1,22 @@
+[DEVICE]
+Name=AT89S8253
+Clock=10000000
+[MEMORY_MODEL]
+Value=0
+[BUILD_TYPE]
+Value=0
+[FILES]
+Count=1
+[HEADERS]
+Count=0
+[BINARIES]
+Count=0
+[OTHER_FILES]
+Count=0
+[OPENED_FILES]
+Count=1
+File0=D:\mikroC PRO for 8051\Svetofor_avtomat\Svetofor_avtomat\SVETOFOR_NORMALNIY.c
+[SEARCH_PATH]
+Count=0
+[HEADER_PATH]
+Count=0

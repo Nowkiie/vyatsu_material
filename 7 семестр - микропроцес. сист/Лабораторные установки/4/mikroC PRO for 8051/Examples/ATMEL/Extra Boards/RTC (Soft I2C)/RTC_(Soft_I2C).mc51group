@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=RTC Read\RTC_Read.mcp51
+Project1=RTC Write\RTC_Write.mcp51
+[ActiveProject]
+Index=0

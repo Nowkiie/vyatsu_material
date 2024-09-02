@@ -1,0 +1,13 @@
+void SerialFlash_init();
+void SerialFlash_WriteEnable();
+unsigned char SerialFlash_IsWriteBusy();
+void SerialFlash_WriteByte(unsigned char _data, unsigned long address);
+void SerialFlash_WriteWord(unsigned int _data, unsigned long address);
+unsigned char SerialFlash_ReadID(void);
+unsigned char SerialFlash_ReadByte(unsigned long address);
+unsigned int SerialFlash_ReadWord(unsigned long address);
+unsigned char SerialFlash_WriteArray(unsigned long address, unsigned char* pData, unsigned int nCount);
+void SerialFlash_ReadArray(unsigned long address, unsigned char* pData, unsigned int nCount);
+void SerialFlash_ChipErase(void);
+void SerialFlash_ResetWriteProtection();
+void SerialFlash_SectorErase(unsigned long address);

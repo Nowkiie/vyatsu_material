@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=RS485 Master\RS485_Master_Example.mcp51
+Project1=RS485 Slave\RS485_Slave_Example.mcp51
+[ActiveProject]
+Index=0

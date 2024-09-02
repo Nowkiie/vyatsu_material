@@ -1,0 +1,351 @@
+mikroC PRO for 8051 2013
+v3.5.0
+------------------------
+- Compiler
+  - Additional chips supported:
+                        C8051F348
+                        C8051F349
+                        C8051F34A
+                        C8051F34B
+                        C8051F34C
+                        C8051F34D
+                        C8051F520
+                        C8051F521
+                        C8051F523
+                        C8051F524
+                        C8051F530
+                        C8051F531
+                        C8051F533
+                        C8051F534
+                        C8051F536
+                        C8051F537
+                        C8051T606
+  - New: Introduced "iv" keyword for linking functions as interrupt handlers
+  - New: Interrupt context saving handling (ICS keyword)
+  - New: Initializer of local variables can be variable expression
+  - New: Support for anonymous unions and anonymous structures  
+  - Fixed: Const Folding of ternary operator
+  - Fixed: Handling of void in expressions
+  - Improved: Peephole optimizer minor changes
+  - Improved: Faster loading of mcl files
+  - Improved: Faster compiler and linker
+  - Imporved: Several predefined constant added (__8051__...)    
+  - Fixed: Problems with large model
+  - Fixed: Several bug fixed  
+                          
+- IDE
+  - New:      Live update support.
+  - New:      Added shortcut button for Package examples.
+  - New:      Pointer  handling in watch window shows data it points to.
+  - New:      Function  pointers show  the name of the function currently pointing at.
+  - New:      Value hint in debug mode for pointers shows data it points to.
+  - New:      Code assistant (CTRL+SPACE) for pointer to structures.
+  - New:      Welcome screen added.
+  - New:      Interrupt assistant added
+  - New:      Update Project Manager  after cleaning project files using ClearProject.
+  - New:      Double Click on bookmark in Bookmark editor opens file and positioniing on line where bookmark is placed.
+  - New:      Remove all breakpoints option implemented.
+  - New:      Added option to reload project file which has been externaly changed
+  - New:      Breakpoints are now saved to file.
+  - New:      Breakpoints are loaded when opening file
+  - New:      Double click on break point in breakpoint's list opens editor and set cursor on line with breakpoint
+  - New:      Delete one breakpoint from breakpoint list is posible now
+  - New:      Project Explorer added
+  - New:      Shortcut CTRL + ALT + S (show Statistics) 
+  - New:      Option to always rebuild all sources
+  - New:      Option to enable/disable a breakpoint
+  - New:      Image Preview window
+  - New:      Added toolbar shortcut to open Examples folder
+  - New:      GIF images supported in Project Manager and Active Comments
+  - New:      Support for Package Manager
+  - New:      Active Comments editor
+  - New:      Highlighting routine under cursor in Code Explorer
+  - New:      Export Project feature, useful for backing up a project and all relevant files with one mouse click
+  - New:      Sorting Procedures List by name and by line number
+  - New:      Drag and drop files to Project Manager
+  - New:      Labels listed in Code Explorer 
+  - New:      Default symbol representation in Watch Window is taken from symbol definition  
+  - New:      Option to always display Messages when building project
+  - New:      Legacy layout resembles the look of earlier mikroIDE versions
+  - New:      Shortcut CTRL+ALT+M - Open MLK file
+  - New:      Shortcut CTRL+ALT+D - Open DEF file
+
+  - Improved: Licensing mechanism
+  - Improved: Bookmark Editor. You can now view bookmark IDs.
+  - Improved: Bookmark Editor. You can now see all files in project containing any bookmark.
+  - Improved: New Project wizard (project folder selection, existing project files added to list).
+  - Improved: New Project Wizard. 
+              * Reduced number of steps for creating new project. 
+              * File name and file path now separated                
+  - Improved: Library manager. Faster loading of libraries
+  - Improved: Search project files in Windows Explorer style
+  - Improved: Add project to project group by single mouse click
+  - Improved: Search Paths Editor 
+             * Copy/Cut/Paste/Select All options for search paths editor
+             * Assigned shotcut CTRL + SHIFT + P
+  - Improved: Statistics is no longer a "modal" window, but rather "stay on top"
+  - Improved: Code Explorer
+  - Improved: Add to watch list mechanism
+  - Improved: Spell checker for all files included in current project
+  - Improved: Code and Parameter Assistant
+  - Improved: Library manager loads MCLs faster
+  - Improved: More user options for control of optimizations
+  - Improved: Tools moved to panels. Now they are dockable and they receive the Color Style from IDE
+              Additional options included, users wishes fulfilled, minor bugs fixed
+  - Improved: Code Assistant (CTRL+SPACE) loads faster
+  - Improved: Faster simulation of Delay_ms and Delay_us functions 
+  - Improved: Build all projects with option to stop the process
+  - Improved: Project manager shows the total number of projects in project group
+  - Improved: Replace dialog is being moved to ensure the target text is visible in editor
+  - Improved: Double click on warning message about non existing search paths opens Search Paths dialog
+  - Improved: Print & Print preview, fixed print selection
+  - Improved: Quick convertor
+  - Improved: Project Manager shows ASM files for all source files
+  - Fixed:    Issue with setting MCU frequency.
+  - Fixed:    Creating project with empty name.
+  - Fixed:    Creating project which name which starts with a digit.
+  - Fixed:    "File Save As", "Project Save As" and "Save Project Group" give wrong file filters.
+  - Fixed:    Active comment starts with a digit caused IDE to crash.
+  - Fixed:    It is not possible to save a project group when projects were added from Project Explorer.
+  - Fixed:    Statistics window did not always stayed on top.
+  - Fixed:    In debug mode changing focus between editor and watch list was not momental (Insert, Delete key...).
+  - Fixed:    Closing file while compile is in progress caused IDE to crash.
+  - Fixed:    Search paths was not refreshed on starting IDE if "Search Path" window was opened when IDE was closed.
+  - Fixed:    Removed space characters in front of line code When a bookmarked line is displayed in bookmark window.
+  - Fixed:    Project settings schemes, some schemes were outdated.
+  - Fixed:    Remove recent project from Start Page caused exception.
+  - Fixed:    Code explorer, when undocked worked incorrectly.
+  - Fixed:    Progress Bar window did not have border.
+  - Fixed:    Undo command in editor doesn't return to saved state of file.
+  - Fixed:    SaveBookmarks doesn't work.
+  - Fixed:    LoadBookmarks doesn't work.
+  - Fixed:    Multiple row word-by-word selection.
+  - Fixed:    Warnings/Hints check box.
+  - Fixed:    A lot of Search/Replace quirks and bugs.
+  - Fixed:    Statistics - uncorrect displaying of free RAM
+  - Fixed:    Loosing all breakpoints when closing editor.
+  - Fixed:    P16ENH simulator did not performe shadow register switching for interrupt 
+  - Fixed:    In some cases IDE freezes if MCU is changed in Project Settings
+  - Fixed:    Visible Statistics are updated after build
+  - Fixed:    32 bit icons fail to load on some graphic cards
+  - Fixed:    Auto Save feature
+  - Fixed:    Indent guides cannot be turned off
+  - Fixed:    Can not read registry key for WIN7 with UAC on  
+  - Fixed:    Simulator can not start-up in some cases if handler functions existed
+  - Fixed:    Uncheck in Library Manager does not clear Code Assistant list
+  - Fixed:    Check in Library Manager clears Code Assistant list
+  - Fixed:    Compiler version is not visible in caption if no projects are open
+  - Fixed:    Parameter assistant ignores commas when switching to another parameter
+  - Fixed:    Improper display of RAM memory usage in statistics
+  - Fixed:    AutoComplete - Incomplete procedure parameter list
+  - Fixed:    Various docking windows issues
+  - Fixed:    Save project group on close
+  - Fixed:    UAC problem on Windows Vista and Windows 7
+  - Fixed:    Windows Vista and Windows 7 manifest problem
+  - Fixed:    Code Explorer on Windows 7 x64 does not display images properly  
+  - Fixed:    EEPROM editor loading .ihex and .eed files problems
+  - Fixed:    Find declaration problems when includes are present
+  - Fixed:    Project Manager - Close Project - Ide crashes when try to Close Project
+  - Fixed:    Project Manager - Add file to project - crashes when try to Add project and nothing is selected in Project Manager
+  - Fixed:    Project Manager - Quick switch between project crashes IDE
+  - Fixed:    Project Manager - Cann't colse a file in Editor if it firstly removed from Project Manger
+  - Fixed:    Project Manager - Still generate an ASM file even if it's dissabled in options
+  - Fixed:    Project Manager - When open a group of projects in PM title bar shows all projects names
+  - Fixed:    Project Manager - Switch between projects in project group on double click
+  - Fixed:    Project Manager - On load project group it is posible to build a project for a wrong chip
+  - Fixed:    Auto save on Build works only for main module
+  - Fixed:    Code Explrorer - Colors for funtions and procedures are the same
+  - Fixed:    Statistics - RAM usage differs in Statistics window and Messages window
+  - Fixed:    Can not resize varialbes column in statistic window
+  - Fixed:    Active Comments do not genrate after sign '-'
+  - Fixed:    IDE crashes if try to close project and building is still in process
+  - Fixed:    Incomplete procedure parameter list
+  - Fixed:    Docking windows problem
+  - Fixed:    On Close Project Group - Save project group
+  - Fixed:    Code Explorer works faster for code over 5000 lines 
+  - Fixed:    New Project Wizard adds the main file at the end of files list
+  - Fixed:    Select All does not take effect
+  - Fixed:    Open Project Group can build project before project is completely open
+  - Fixed:    Close Project Group - always ask for Save
+  - Fixed:    If two editors are undocked Select All perfoms action in inactive editor
+  - Fixed:    Steping over a fuction with arguments opens dissasembly listing in some cases
+  - Fixed:    Print preview for Arctic theme shows entire page in black
+  - Fixed:    Cancelling changes in [Options -> Tools] does not reset tools to previous state
+  - Fixed:    Step into function with parameters
+  - Fixed:    Bookmarks window does not reflect changes when lines are inserted/deleted
+  - Fixed:    Cut/Copy/Paste operations in Watch Window and Quick Converter mistakenly perform the action into active editor
+  - Fixed:    ALT+Key invokes IDE commands instead of opening menu items
+  - Fixed:    Program error when docking Project Manager inside Editors window
+  - Fixed:    Tool parameter "%LIST_FILE_NAME" does not add the name of listfile
+  - Fixed:    Save project group on IDE closing 
+  - Fixed:    Slow editor response in certain cases
+  - Fixed:    Adding variable passed by reference to the Watch Window causes error
+
+- Libraries
+  - Improved: Added functions in Conversions library:
+                        IntToStrWithZeros
+                        LongWordToStrWithZeros
+                        LongIntToStrWithZeros
+                        ByteToHex
+                        ShortToHex
+                        WordToHex
+                        IntToHex
+                        LongWordToHex
+                        LongIntToHex
+  - Improved: Added UART and SPI generic functions.
+  
+
+- Examples:
+  - New : Added examples for BIG8051 development system
+  
+
+v.2.2 (2009-08-11)
+------------------------
+- Compiler
+  - Additional chips supported:
+     AT80C5112         C8051F011         C8051F220       C8051F352       C8051T612                
+     AT80C51SND1C      C8051F012         C8051F221       C8051F353       C8051T613               
+     AT83C5111         C8051F015         C8051F226       C8051F360       C8051T614               
+     AT83C5112         C8051F016         C8051F230       C8051F361       C8051T615               
+     AT83SND1C         C8051F017         C8051F231       C8051F362       C8051T616               
+     AT87C5111         C8051F018         C8051F236       C8051F363       C8051T617               
+     AT87C5112         C8051F019         C8051F300       C8051F364       T83C5101                
+     AT89C2051         C8051F020         C8051F301       C8051F365       T83C5102                
+     AT89C4051         C8051F021         C8051F302       C8051F366       T87C5101                
+     AT89C51           C8051F022         C8051F303       C8051F367       T89C5115                
+     AT89C5131         C8051F023         C8051F304       C8051F368       T89C51AC2               
+     AT89C5132         C8051F040         C8051F305       C8051F369       T89C51CC01              
+     AT89C51CC03       C8051F041         C8051F310       C8051F410       T89C51CC02              
+     AT89C51ED2        C8051F042         C8051F311       C8051F411                               
+     AT89C51IC2        C8051F043         C8051F312       C8051F412                               
+     AT89C51ID2        C8051F044         C8051F313       C8051F413                               
+     AT89C51RB2        C8051F045         C8051F314       C8051F520A                              
+     AT89C51RC         C8051F046         C8051F315       C8051F521A                              
+     AT89C51RC2        C8051F047         C8051F316       C8051F523A                              
+     AT89C51RD2        C8051F060         C8051F317       C8051F524A                              
+     AT89C51SND1C      C8051F061         C8051F320       C8051F526A                              
+     AT89C52           C8051F062         C8051F321       C8051F527A                              
+     AT89C55WD         C8051F063         C8051F326       C8051F530A                              
+     AT89LP428         C8051F064         C8051F327       C8051F531A                              
+     AT89LP828         C8051F065         C8051F330       C8051F533A                              
+     AT89LS51          C8051F066         C8051F331       C8051F534A                              
+     AT89LS52          C8051F067         C8051F332       C8051F536A                              
+     AT89LS53          C8051F120         C8051F333       C8051F537A                              
+     AT89LS8252        C8051F121         C8051F334       C8051F920                               
+     AT89LV51          C8051F122         C8051F335       C8051F921                               
+     AT89LV52          C8051F123         C8051F340       C8051F930                               
+     AT89LV55          C8051F124         C8051F341       C8051F931                               
+     AT89S52E          C8051F125         C8051F342       C8051T600                               
+     C8051F000         C8051F126         C8051F343       C8051T601                               
+     C8051F001         C8051F127         C8051F344       C8051T602                               
+     C8051F002         C8051F130         C8051F345       C8051T603                               
+     C8051F005         C8051F131         C8051F346       C8051T604                               
+     C8051F006         C8051F132         C8051F347       C8051T605                               
+     C8051F007         C8051F133         C8051F350       C8051T610                               
+     C8051F010         C8051F206         C8051F351       C8051T611                               
+  - New: Support for Silicon labs 8-bit mixed-signal  MCUs 
+  - New: Added New examples for both SiLabs and ATMEL MCUs 
+  - New: SFR paging support added to linker
+  - New: mlk files improved (XML file type)
+  - New: sbit and bit vaiables allocation allowed in all data spaces (bdata, data, idata, pdata, xdata)
+  - New: Multipass allocation of functions
+  - New: Compress calls optimization added to Linker
+  - New: Compress jumps optimization added to Linker
+  - New: Libraries added: SMBus, TWI, PrintOut
+  - New: X2 option added (ATMEL family)
+  - Improved: Delay_ms and Delay_us built-ins improved 
+  - Improved: RAM usage
+  - Improved: Handling of interrupt                                
+  - Improved: Pointer to functions added to libraries (SPI, UART)                                
+  - Improved: Greater flexibility for libraries using SPI and UART modules (SPI_Glcd, Ethernet, RS485 etc.)        
+  - Improved: Interrupt handling 
+  - Improved: Initialization sections
+  - Improved: Minor bugs fixed
+  - Improved: Help revised and updated
+
+- IDE
+  - New: Active comments added to editor (web links as active sections in comments) 
+  - New: Web links node added to code explorer
+  - New: Advanced EEPROM editor tool
+  - New: Alternative HTML statistics preview
+  - New: Quick convertor added and improved
+  - New: Shortcut CTRL+ALT+M - Open MLK file
+  - New: Shortcut CTRL+ALT+D - Open DEF file
+  - New: Sorting Procedures List by name and by line number
+  - New: Drag and drop files to Project Manager
+  - New: SFR Paging added to simulator RAM View
+  - New: XRAM added to simulator RAM View
+  - Changed: Project file extension changed from *.mcproj to *.mcp51  
+  - Changed: Project group extension changed from *.mpgroup to *.mc51group
+  - Changed: New Project Wizard (all libraries checked option added) 
+  - Improved: Statistics
+  - Improved: Find in files
+  - Improved: Shell open for files in Project Manager
+  - Improved: Auto Complete
+  - Improved: Auto Correct
+  - Improved: Project Open 
+  - Improved: Print preview added, print options problem solved
+  - Improved: Build all projects with option to stop the process
+  - Improved: Project manager shows the total number of projects in project group
+  - Improved: Replace dialog is being moved to ensure the target text is visible in editor
+  - Improved: Watch values shows simulation time in us/ms
+  - Improved: External nodes added to code explorer
+  - Improved: Enhancement of IDE styles set
+  - Improved: Asm files added for all source files in the Project Manager window
+  - Improved: Code Assistant display improved for local declarations 
+  - Fixed: IDE Error when deleting lines above breakpoint
+  - Fixed: Bookmarks window does not reflect changes when lines are inserted/deleted  
+  - Fixed: Cut/Copy/Paste operations in Watch Window and Quick Convertor 
+           mistakenly perform the action into active editor
+  - Fixed: ALT+Key invokes IDE commands instead of opening menu items
+  - Fixed: Program error raised if docking Project Manager inside 
+           Editors window is performed
+  - Fixed: EEPROM editor freezes if mouse scrolls too fast
+
+v.1.0 (2008-03-17)
+------------------------
+- IDE
+  - New: Customizable new look
+  - New: Layout manager
+  - New: Project manager
+  - New: Library manager
+  - New: Drag and drop files to editor
+  - New: Code folding feature
+  - New: Autocorrect notification
+  - New: Declaration syntax checker
+  - New: Advanced bookmark editor
+  - New: Macro manager
+  - New: New project wizard
+  - New: Bug report tool
+  - New: Templates for AutoComplete
+  - New: Complete Help for IDE + Language and library reference and 8051 specifics
+  - New: Spell checker
+  - Improved: Brackets painter
+  - Improved: Code explorer
+  - Improved: Docking manager  
+  - Improved: Messages window with filtering
+  - Improved: Grep search feature
+  - Improved: Code Assistant, Parameter Assistant
+  
+- Compiler
+  - New: Command line interface
+  - New: Bit, sbit variables support
+  - New: Small, compact and large memory model support
+  - New: Efficient file format for libraries (.MCL)
+  - New: Additional set of keywords to fasciliate 8051 programming:
+        code   pdata     sbit    
+        data   small     bit     
+        idata  compact   sfr     
+        bdata  large     ilevel  
+        xdata  at        
+  - New: PeepHole optimization added to optimizer
+  - New: Compiler front end redesigned for faster compilation
+  - Improved: Memory management, initialisation sections introduced
+  - Improved: Fast and efficient linker algorithm
+  - Improved: Fast Hex generator
+  - Improved: Fast loading and writing compiled libraries (.MCL)
+  - Improved: Messaging system
+  - Improved: Output options control
+  - Improved: Libraries redesigned and rewritten to meets demands of 8051 architecture
+  - Improved: Fast and small executable code
+  - Improved: Optimizer rewritten to meet demands of 8051 architecture

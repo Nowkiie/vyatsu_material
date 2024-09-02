@@ -1,0 +1,21 @@
+[PROJECTS]
+Count=17
+Project0=ADC On UART\Adc_On_Uart.mcp51
+Project1=Button\Button.mcp51
+Project2=Comparator\Comparator.mcp51
+Project3=DAC\DAC.mcp51
+Project4=EEPROM\SMBus_Simple.mcp51
+Project5=GLCD\Glcd.mcp51
+Project6=LCD\Lcd.mcp51
+Project7=Led Blinking\LED_Blinking.mcp51
+Project8=Led Blinking\LED_Curtain.mcp51
+Project9=One Wire\One_Wire.mcp51
+Project10=SerialFlash\Serial_Flash_example.mcp51
+Project11=SerialRAM\SerialRAM.mcp51
+Project12=Sound\Sound.mcp51
+Project13=SPI Ethernet\SPI_Ethernet.mcp51
+Project14=UART1\UART1.mcp51
+Project15=UART2\UART2.mcp51
+Project16=USB UART\USB_UART.mcp51
+[ActiveProject]
+Index=0

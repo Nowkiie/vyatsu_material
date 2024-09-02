@@ -1,0 +1,97 @@
+[DEVICE]
+Name=AT89S8252
+Clock=12000000
+[MEMORY_MODEL]
+Value=0
+[BUILD_TYPE]
+Value=0
+[ACTIVE_TAB]
+Value=Svetofor.c
+[USE_EEPROM]
+Value=0
+[EEPROM_DEFINITION]
+Value=
+[PLL_FACTOR]
+Value=1
+[FILES]
+Count=2
+File0=Svetofor.c
+File1=Drv.c
+[BINARIES]
+Count=0
+[IMAGES]
+Count=0
+ActiveImageIndex=-1
+[OPENED_FILES]
+Count=3
+File0=Drv.c
+File1=drv.h
+File2=Svetofor.c
+[EEPROM]
+Count=0
+[ACTIVE_COMMENTS_FILES]
+Count=0
+[OTHER_FILES]
+Count=0
+[SEARCH_PATH]
+Count=7
+Path0=C:\Program Files\Mikroelektronika\mikroC PRO for 8051\defs\
+Path1=D:\alex\ЙНОХЪ ТКЕЬЙХ\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+Path2=E:\Mikroelektronika\mikroC PRO for 8051\defs\
+Path3=G:\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+Path4=F:\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+Path5=E:\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
+Path6=C:\Program Files\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
+[HEADER_PATH]
+Count=3
+Path0=D:\alex\ЙНОХЪ ТКЕЬЙХ\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+Path1=F:\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+Path2=G:\щбл\лоя\лоя_2В\кЮА\3-лй\Svetofor_avtomat\
+[HEADERS]
+Count=1
+File0=drv.h
+[PLDS]
+Count=0
+[Useses]
+Count=36
+File0=Button
+File1=CAN_SPI
+File2=Conversions
+File3=C_Math
+File4=C_Stdlib
+File5=C_String
+File6=C_Type
+File7=EEPROM
+File8=Glcd
+File9=Glcd_Fonts
+File10=Keypad4x4
+File11=Lcd
+File12=Lcd_Constants
+File13=Manchester
+File14=One_Wire
+File15=Port_Expander
+File16=PrintOut
+File17=PS2
+File18=RS485
+File19=Software_I2C
+File20=Software_SPI
+File21=Software_UART
+File22=Sound
+File23=SPI
+File24=SPI_Ethernet
+File25=SPI_Glcd
+File26=SPI_Lcd
+File27=SPI_Lcd8
+File28=SPI_T6963C
+File29=Sprintf
+File30=Sprinti
+File31=Sprintl
+File32=T6963C
+File33=Time
+File34=Trigonometry
+File35=UART
+[EXPANDED NODES]
+Node1=Sources
+Node2=Header Files
+Node3=Output Files
+Count=3

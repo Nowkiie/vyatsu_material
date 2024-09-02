@@ -1,0 +1,13 @@
+<CAN_SPI_Board>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/communication/canspi/</Url>
+		<Image>CAN SPI Board.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</CAN_SPI_Board>

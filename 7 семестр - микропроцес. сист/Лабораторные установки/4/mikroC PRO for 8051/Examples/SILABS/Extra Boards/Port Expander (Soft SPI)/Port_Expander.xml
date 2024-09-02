@@ -1,0 +1,13 @@
+<Port_Expander>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/various/port-expander/</Url>
+		<Image>Port Expander Board.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</Port_Expander>

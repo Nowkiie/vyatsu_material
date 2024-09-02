@@ -1,0 +1,20 @@
+[PROJECTS]
+Count=16
+Project0=CAN SPI\CAN SPI 1st\Can_Spi_1st.mcp51
+Project1=CAN SPI\CAN SPI 2nd\Can_Spi_2nd.mcp51
+Project2=EEPROM (Soft I2C)\Soft I2C Advanced\Soft_I2C_Advanced.mcp51
+Project3=EEPROM (Soft I2C)\Soft I2C Simple\Soft_I2C_Simple.mcp51
+Project4=Keypad 4x4\Keypad4x4.mcp51
+Project5=Port Expander (Soft SPI)\Soft_SPI.mcp51
+Project6=RS485\RS485 Master\RS485_Master_Example.mcp51
+Project7=RS485\RS485 Slave\RS485_Slave_Example.mcp51
+Project8=SPI Ethernet\SpiEthernet.mcp51
+Project9=SPI Glcd\SPI_Glcd.mcp51
+Project10=SPI Lcd\SPI_Lcd.mcp51
+Project11=SPI Lcd8\SPI_Lcd8.mcp51
+Project12=SPI T6963C\SPI T6963C 240x128\SPI_T6963C_240x128.mcp51
+Project13=SPI T6963C\SPI T6963C 240x64\SPI_T6963C_240x64.mcp51
+Project14=T6963C\T6963C 240x128\T6963C_240x128.mcp51
+Project15=T6963C\T6963C 240x64\T6963C_240x64.mcp51
+[ActiveProject]
+Index=0

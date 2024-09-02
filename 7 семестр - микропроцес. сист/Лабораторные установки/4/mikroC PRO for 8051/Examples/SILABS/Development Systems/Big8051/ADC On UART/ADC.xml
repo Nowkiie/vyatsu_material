@@ -1,0 +1,13 @@
+<ADC>
+	<Attributes>
+		<Url></Url>
+		<Image>big_8051_adc_input.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick></OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</ADC>

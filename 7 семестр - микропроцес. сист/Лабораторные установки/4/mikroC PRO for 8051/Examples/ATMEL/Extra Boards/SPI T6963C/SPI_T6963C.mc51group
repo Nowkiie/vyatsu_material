@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=SPI T6963C 240x128\SPI_T6963C_240x128.mcp51
+Project1=SPI T6963C 240x64\SPI_T6963C_240x64.mcp51
+[ActiveProject]
+Index=0

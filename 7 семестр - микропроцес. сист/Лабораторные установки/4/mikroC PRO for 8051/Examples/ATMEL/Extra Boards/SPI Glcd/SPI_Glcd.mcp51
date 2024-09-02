@@ -1,0 +1,46 @@
+[DEVICE]
+Name=AT89S8253
+Clock=10000000
+[MEMORY_MODEL]
+Value=0
+[BUILD_TYPE]
+Value=0
+[ACTIVE_TAB]
+Value=SPI_Glcd.c
+[USE_EEPROM]
+Value=0
+[EEPROM_DEFINITION]
+Value=
+[PLL_FACTOR]
+Value=1
+[FILES]
+Count=2
+File0=SPI_Glcd.c
+File1=Bitmap.c
+[BINARIES]
+Count=0
+[IMAGES]
+Count=1
+File0=SPI GLCD 128x64 adapter.jpg
+ActiveImageIndex=0
+[EEPROM]
+Count=0
+[ACTIVE_COMMENTS_FILES]
+Count=1
+File0=Serial_GLCD_128x64_Adapter_Board.xml
+[OTHER_FILES]
+Count=0
+[HEADERS]
+Count=0
+[PLDS]
+Count=0
+[Useses]
+Count=4
+File0=SPI_Glcd
+File1=Glcd_Fonts
+File2=Port_Expander
+File3=SPI
+[EXPANDED NODES]
+Node1=Sources
+Node2=Active Comments Files
+Count=2

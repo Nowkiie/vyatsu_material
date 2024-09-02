@@ -1,0 +1,13 @@
+<DAC_Board>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/measurement/dac/</Url>
+		<Image>DAC Board.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</DAC_Board>

@@ -1,0 +1,7 @@
+[PROJECTS]
+Count=3
+Project0=External Interrupt\Ext_Interrupt.mcp51
+Project1=Timer1 Interrupt\Timer1_Interrupt.mcp51
+Project2=WDT\WatchDog_Timer.mcp51
+[ActiveProject]
+Index=0

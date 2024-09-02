@@ -1,0 +1,13 @@
+<Serial_GLCD>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/display/serial-glcd-240-128-adapter/</Url>
+		<Image>SPI GLCD T6963C 240x128 adapter.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</Serial_GLCD>

@@ -1,0 +1,8 @@
+[PROJECTS]
+Count=4
+Project0=AT89S8253\EEPROM in MCU\Eeprom.mcp51
+Project1=AT89S8253\External Interrupt\Ext_Interrupt.mcp51
+Project2=AT89S8253\Timer1 Interrupt\Timer1_Interrupt.mcp51
+Project3=AT89S8253\WDT\WatchDog_Timer.mcp51
+[ActiveProject]
+Index=0

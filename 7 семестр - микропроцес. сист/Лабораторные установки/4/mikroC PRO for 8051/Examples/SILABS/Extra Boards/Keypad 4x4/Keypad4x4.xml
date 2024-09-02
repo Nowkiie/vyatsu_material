@@ -1,0 +1,13 @@
+<Keypad4x4>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/various/keypad-4x4/</Url>
+		<Image>Keypad 4x4 Board.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</Keypad4x4>

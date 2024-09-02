@@ -1,0 +1,325 @@
+date/time         : 2022-11-09, 15:00:31, 609ms
+computer name     : PC2-307-1
+user name         : student
+registered owner  : Илья Карпасов
+operating system  : Windows XP Service Pack 3 build 2600
+system language   : Russian
+system up time    : 56 minutes 33 seconds
+program up time   : 14 seconds
+processors        : 2x Intel(R) Core(TM)2 CPU 6400 @ 2.13GHz
+physical memory   : 1673/2039 MB (free/total)
+free disk space   : (C:) 38,95 GB (D:) 75,15 GB
+display mode      : 1280x1024, 32 bit
+process id        : $590
+allocated memory  : 26,19 MB
+executable        : mikroC Pro 8051.exe
+exec. date/time   : 2013-06-10 19:48
+version           : 3.5.0.0
+compiled with     : Delphi 2006/07
+madExcept version : 3.0l
+callstack crc     : $a4dab9ae, $125e82dd, $0bafc90b
+exception number  : 1
+exception class   : EStringListError
+exception message : List index out of bounds (0).
+
+main thread ($564):
+00474670 +01c mikroC Pro 8051.exe Classes                          TStringList.Get
+00a80624 +0a4 mikroC Pro 8051.exe MainForm              14348  +11 TfrmMain.projectItemClicked
+00a3cb86 +55e mikroC Pro 8051.exe AdvSmoothImageListBox  3896 +181 TAdvSmoothImageListBox.MouseUp
+004e58dc +02c mikroC Pro 8051.exe Controls                         TControl.DoMouseUp
+004e595e +076 mikroC Pro 8051.exe Controls                         TControl.WMLButtonUp
+004e4fd3 +2bb mikroC Pro 8051.exe Controls                         TControl.WndProc
+004e8fd7 +4fb mikroC Pro 8051.exe Controls                         TWinControl.WndProc
+004e8700 +02c mikroC Pro 8051.exe Controls                         TWinControl.MainWndProc
+0047ce78 +014 mikroC Pro 8051.exe Classes                          StdWndProc
+7e3696c2 +00a USER32.dll                                           DispatchMessageA
+00505960 +0fc mikroC Pro 8051.exe Forms                            TApplication.ProcessMessage
+0050599a +00a mikroC Pro 8051.exe Forms                            TApplication.HandleMessage
+00505c8f +0b3 mikroC Pro 8051.exe Forms                            TApplication.Run
+00acbb08 +1d8 mikroC Pro 8051.exe AQdockDemo              246  +58 initialization
+
+thread $584 (TWorkerThread):
+7c90df3a +0a ntdll.dll                                NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll                             WaitForSingleObjectEx
+7c80253d +0d kernel32.dll                             WaitForSingleObject
+006a71cd +19 mikroC Pro 8051.exe VirtualTrees 5208 +3 TWorkerThread.Execute
+004524e3 +2b mikroC Pro 8051.exe madExcept            HookedTThreadExecute
+0047b194 +34 mikroC Pro 8051.exe Classes              ThreadProc
+00405c40 +28 mikroC Pro 8051.exe System        366 +0 ThreadWrapper
+004523c5 +0d mikroC Pro 8051.exe madExcept            CallThreadProcSafe
+0045242f +37 mikroC Pro 8051.exe madExcept            ThreadExceptFrame
+>> created by main thread ($564) at:
+006a7112 +16 mikroC Pro 8051.exe VirtualTrees 5171 +1 TWorkerThread.Create
+
+thread $608:
+7c90d1fa +a ntdll.dll  NtDelayExecution
+
+thread $60c:
+7c90da2a +a ntdll.dll  NtRemoveIoCompletion
+
+thread $620:
+7c90df3a +0a ntdll.dll                     NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll                  WaitForSingleObjectEx
+7c80253d +0d kernel32.dll                  WaitForSingleObject
+004523c5 +0d mikroC Pro 8051.exe madExcept CallThreadProcSafe
+0045242f +37 mikroC Pro 8051.exe madExcept ThreadExceptFrame
+>> created by thread $5f8 at:
+71a9d374 +00 WS2_32.dll
+
+thread $348:
+7c90da8a +0a ntdll.dll                     NtReplyWaitReceivePortEx
+004523c5 +0d mikroC Pro 8051.exe madExcept CallThreadProcSafe
+0045242f +37 mikroC Pro 8051.exe madExcept ThreadExceptFrame
+>> created by main thread ($564) at:
+77e7df36 +00 RPCRT4.dll
+
+thread $1e4:
+7c90d1fa +0a ntdll.dll                     NtDelayExecution
+7c8023eb +4b kernel32.dll                  SleepEx
+7c802450 +0a kernel32.dll                  Sleep
+004523c5 +0d mikroC Pro 8051.exe madExcept CallThreadProcSafe
+0045242f +37 mikroC Pro 8051.exe madExcept ThreadExceptFrame
+>> created by main thread ($564) at:
+7751fd64 +00 ole32.dll
+
+thread $1fc:
+7c90da8a +0a ntdll.dll                     NtReplyWaitReceivePortEx
+004523c5 +0d mikroC Pro 8051.exe madExcept CallThreadProcSafe
+0045242f +37 mikroC Pro 8051.exe madExcept ThreadExceptFrame
+>> created by thread $348 at:
+77e7df36 +00 RPCRT4.dll
+
+thread $63c (TImageLoaderThread): <priority:-2>
+7c90d1fa +00a ntdll.dll                                          NtDelayExecution
+7c8023eb +04b kernel32.dll                                       SleepEx
+7c802450 +00a kernel32.dll                                       Sleep
+00a43ff3 +3ef mikroC Pro 8051.exe AdvSmoothImageListBox 7494 +98 TImageLoaderThread.Execute
+004524e3 +02b mikroC Pro 8051.exe madExcept                      HookedTThreadExecute
+0047b194 +034 mikroC Pro 8051.exe Classes                        ThreadProc
+00405c40 +028 mikroC Pro 8051.exe System                 366  +0 ThreadWrapper
+004523c5 +00d mikroC Pro 8051.exe madExcept                      CallThreadProcSafe
+0045242f +037 mikroC Pro 8051.exe madExcept                      ThreadExceptFrame
+>> created by main thread ($564) at:
+00a43a07 +01b mikroC Pro 8051.exe AdvSmoothImageListBox 7344  +2 TImageLoaderThread.Create
+
+modules:
+00400000 mikroC Pro 8051.exe 3.5.0.0          D:\mikroC PRO for 8051
+03ca0000 pdfc_core.dll       0.3.1.4          C:\WINDOWS\System32\spool\DRIVERS\W32X86\3
+047a0000 xpsp2res.dll        5.1.2600.5512    C:\WINDOWS\system32
+1a400000 URLMON.DLL          8.0.6001.18702   C:\WINDOWS\system32
+4ebe0000 gdiplus.dll         5.1.3102.5512    C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.5512_x-ww_dfb54e0c
+58be0000 icm32.dll           5.1.2600.5512    C:\WINDOWS\system32
+5b260000 UXTHEME.DLL         6.0.2900.5512    C:\WINDOWS\system32
+5bd50000 NETAPI32.dll        5.1.2600.5694    C:\WINDOWS\system32
+5dca0000 iertutil.dll        8.0.6001.18702   C:\WINDOWS\system32
+5f2f0000 olepro32.dll        5.1.2600.5512    C:\WINDOWS\system32
+68e70000 HHCTRLui.dll        4.74.9273.0      C:\WINDOWS\system32\mui\0019
+6a900000 pdfc_ui.dll         0.3.1.4          C:\WINDOWS\System32\spool\DRIVERS\W32X86\3
+71a30000 mswsock.dll         5.1.2600.5512    C:\WINDOWS\System32
+71a80000 WS2HELP.dll         5.1.2600.5512    C:\WINDOWS\system32
+71a90000 WS2_32.dll          5.1.2600.5512    C:\WINDOWS\system32
+71ab0000 wsock32.dll         5.1.2600.5512    C:\WINDOWS\system32
+72fc0000 winspool.drv        5.1.2600.5512    C:\WINDOWS\system32
+732a0000 RICHED32.DLL        5.1.2600.0       C:\WINDOWS\system32
+73af0000 mscms.dll           5.1.2600.5512    C:\WINDOWS\system32
+746e0000 MSCTF.dll           5.1.2600.5512    C:\WINDOWS\system32
+74940000 msxml3.dll          8.90.1101.0      C:\WINDOWS\system32
+74c40000 oleacc.dll          4.2.5406.0       C:\WINDOWS\system32
+74df0000 RICHED20.DLL        5.30.23.1230     C:\WINDOWS\system32
+75310000 msctfime.ime        5.1.2600.5512    C:\WINDOWS\system32
+76050000 MSVCP60.dll         6.2.3104.0       C:\WINDOWS\system32
+76350000 msimg32.dll         5.1.2600.5512    C:\WINDOWS\system32
+76360000 imm32.dll           5.1.2600.5512    C:\WINDOWS\system32
+76380000 comdlg32.dll        6.0.2900.5512    C:\WINDOWS\system32
+765d0000 CSCDLL.dll          5.1.2600.5512    C:\WINDOWS\System32
+769a0000 USERENV.dll         5.1.2600.5512    C:\WINDOWS\system32
+76b20000 winmm.dll           5.1.2600.5512    C:\WINDOWS\system32
+76d50000 iphlpapi.dll        5.1.2600.5512    C:\WINDOWS\system32
+76e70000 rtutils.dll         5.1.2600.5512    C:\WINDOWS\system32
+76e80000 rasman.dll          5.1.2600.5512    C:\WINDOWS\system32
+76ea0000 TAPI32.dll          5.1.2600.5512    C:\WINDOWS\system32
+76ed0000 RASAPI32.dll        5.1.2600.5512    C:\WINDOWS\system32
+76f10000 DNSAPI.dll          5.1.2600.5512    C:\WINDOWS\system32
+76f50000 WLDAP32.dll         5.1.2600.5512    C:\WINDOWS\system32
+76fa0000 winrnr.dll          5.1.2600.5512    C:\WINDOWS\System32
+76fb0000 rasadhlp.dll        5.1.2600.5512    C:\WINDOWS\system32
+76fc0000 CLBCATQ.DLL         2001.12.4414.700 C:\WINDOWS\system32
+77040000 COMRes.dll          2001.12.4414.700 C:\WINDOWS\system32
+77110000 oleaut32.dll        5.1.2600.5512    C:\WINDOWS\system32
+773c0000 comctl32.dll        6.0.2900.5512    C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83
+774d0000 ole32.dll           5.1.2600.5512    C:\WINDOWS\system32
+77910000 SETUPAPI.dll        5.1.2600.5512    C:\WINDOWS\system32
+77a10000 cscui.dll           5.1.2600.5512    C:\WINDOWS\System32
+77b30000 appHelp.dll         5.1.2600.5512    C:\WINDOWS\system32
+77bf0000 version.dll         5.1.2600.5512    C:\WINDOWS\system32
+77c00000 msvcrt.dll          7.0.2600.5512    C:\WINDOWS\system32
+77c60000 msv1_0.dll          5.1.2600.5512    C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll        5.1.2600.5512    C:\WINDOWS\system32
+77e70000 RPCRT4.dll          5.1.2600.5512    C:\WINDOWS\system32
+77f10000 GDI32.dll           5.1.2600.5512    C:\WINDOWS\system32
+77f60000 SHLWAPI.dll         6.0.2900.5512    C:\WINDOWS\system32
+77fe0000 Secur32.dll         5.1.2600.5512    C:\WINDOWS\system32
+7c800000 kernel32.dll        5.1.2600.5512    C:\WINDOWS\system32
+7c900000 ntdll.dll           5.1.2600.5512    C:\WINDOWS\system32
+7c9c0000 shell32.dll         6.0.2900.5512    C:\WINDOWS\system32
+7e360000 USER32.dll          5.1.2600.5512    C:\WINDOWS\system32
+7e400000 HHCTRL.OCX          5.2.3790.4110    C:\WINDOWS\system32
+
+processes:
+000 Idle                0   0
+004 System              0   0
+19c smss.exe            0   0
+288 csrss.exe           0   0
+2a0 winlogon.exe        0   0
+2cc services.exe        0   0
+2d8 lsass.exe           0   0
+380 svchost.exe         0   0
+3c4 svchost.exe         0   0
+3ec svchost.exe         0   0
+43c svchost.exe         0   0
+460 svchost.exe         0   0
+4c0 spoolsv.exe         0   0
+5d0 iviRegMgr.exe       0   0
+628 Explorer.EXE        271 215 normal C:\WINDOWS
+624 jtagserver.exe      0   0
+694 pdfsvc.exe          0   0
+0a0 hkcmd.exe           7   15  normal C:\WINDOWS\system32
+0ac igfxpers.exe        7   7   normal C:\WINDOWS\system32
+0ec RTHDCPL.EXE         482 165 normal C:\WINDOWS
+100 pdfsty.exe          14  7   normal C:\Program Files\PDF Complete
+104 alg.exe             0   0
+1b8 ctfmon.exe          18  11  normal C:\WINDOWS\system32
+590 mikroC Pro 8051.exe 876 708 normal D:\mikroC PRO for 8051
+
+hardware:
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH8 2 port Serial ATA Storage Controller - 2825 (driver 8.0.0.1008)
+  - Intel(R) ICH8 4 port Serial ATA Storage Controller - 2820 (driver 8.0.0.1008)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
++ Видеоадаптеры
+  - Intel(R)  Q965/Q963 Express Chipset Family (driver 6.14.10.4642)
++ Дисковые устройства
+  - ST3160815AS
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5275)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Стандартная (101/102 клавиши) или клавиатура PS/2 Microsoft Natural
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2830 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2831 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2834 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2835 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB2 Enhanced Host Controller - 2836 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB2 Enhanced Host Controller - 283A (driver 8.0.0.1008)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
++ Мониторы
+  - Модуль подключения монитора
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - PS/2-совместимая мышь
++ Порты (COM и LPT)
+  - ECP порт принтера (LPT1)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 CPU          6400  @ 2.13GHz
+  - Intel(R) Core(TM)2 CPU          6400  @ 2.13GHz
++ Сетевые платы
+  - Broadcom NetXtreme Gigabit Ethernet (driver 9.52.0.0)
++ Системные устройства
+  - CMOS и часы
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) ICH8 Family PCI Express Root Port 1 - 283F (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family PCI Express Root Port 2 – 2841 (driver 8.0.0.1008)
+  - Intel(R) ICH8/ICH8R Family LPC Interface Controller - 2810 (driver 8.0.0.1008)
+  - Intel(R) Q963/Q965 Processor to I/O Controller – 2990 (driver 8.0.0.1006)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Интерфейс управления для ACPI Microsoft Windows
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Логический интерфейс порта принтера
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Расширенный программируемый контроллер прерываний
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системный таймер
+  - Шина PCI
+
+cpu registers:
+eax = 05393e60
+ebx = 0539f708
+ecx = 00000000
+edx = 00474675
+esi = 00000000
+edi = 00000000
+eip = 00474675
+esp = 0012fb60
+ebp = 0012fbc0
+
+stack dump:
+0012fb60  75 46 47 00 de fa ed 0e - 01 00 00 00 07 00 00 00  uFG.............
+0012fb70  74 fb 12 00 75 46 47 00 - 60 3e 39 05 08 f7 39 05  t...uFG.`>9...9.
+0012fb80  00 00 00 00 00 00 00 00 - c0 fb 12 00 90 fb 12 00  ................
+0012fb90  00 00 00 00 00 aa 2a 04 - 50 b2 46 00 90 aa 2a 04  ......*.P.F...*.
+0012fba0  32 30 47 00 d8 fb 12 00 - dc 54 40 00 c0 fb 12 00  20G......T@.....
+0012fbb0  f0 fb 12 00 00 00 00 00 - 90 aa 2a 04 00 00 00 00  ..........*.....
+0012fbc0  fc fb 12 00 75 46 47 00 - 02 00 00 00 00 a6 29 04  ....uFG.......).
+0012fbd0  f4 e9 46 00 27 06 a8 00 - ec fd 12 00 dc 54 40 00  ..F.'........T@.
+0012fbe0  fc fb 12 00 00 00 00 00 - d0 2b 2d 04 00 00 00 00  .........+-.....
+0012fbf0  00 00 00 00 b0 45 95 01 - 00 00 00 00 34 fc 12 00  .....E......4...
+0012fc00  8c cb a3 00 00 00 00 00 - 00 00 00 00 d0 2b 2d 04  .............+-.
+0012fc10  28 c6 a3 00 00 00 00 00 - 54 9f 37 7e 12 00 00 00  (.......T.7~....
+0012fc20  02 00 00 00 ff ff ff ff - 4a 00 00 00 00 00 00 00  ........J.......
+0012fc30  00 00 00 00 a4 fd 12 00 - e1 58 4e 00 4a 00 00 00  .........XN.J...
+0012fc40  80 00 00 00 1c fe 12 00 - 74 54 4e 00 d0 2b 2d 04  ........tTN..+-.
+0012fc50  63 59 4e 00 80 00 4a 00 - 80 00 00 00 4a 00 00 00  cYN...J.....J...
+0012fc60  00 00 00 00 00 00 00 00 - 74 01 00 00 9e 01 00 00  ........t.......
+0012fc70  94 fe 12 00 d0 2b 2d 04 - 1c fe 12 00 d6 4f 4e 00  .....+-......ON.
+0012fc80  94 fe 12 00 3c 06 ac 03 - d0 2b 2d 04 b0 45 95 01  ....<....+-..E..
+0012fc90  10 ce 9a 01 70 84 9e 01 - 5a 73 50 00 3f b0 00 00  ....p...ZsP.?...
+
+disassembling:
+[...]
+00a8060e         mov     eax, [eax+$d20]
+00a80614         mov     eax, [eax+$3e0]
+00a8061a         mov     eax, [eax+$a8]
+00a80620         xor     edx, edx
+00a80622         mov     ebx, [eax]
+00a80624       > call    dword ptr [ebx+$c]
+00a80627 14349   mov     cl, 1
+00a80629         mov     edx, [ebp-$c]
+00a8062c         mov     eax, [ebp-8]
+00a8062f         call    -$f844 ($a70df0)       ; MainForm.TfrmMain.SetActiveEditor
+00a80634 14350   jmp     loc_a806ab
+[...]
+

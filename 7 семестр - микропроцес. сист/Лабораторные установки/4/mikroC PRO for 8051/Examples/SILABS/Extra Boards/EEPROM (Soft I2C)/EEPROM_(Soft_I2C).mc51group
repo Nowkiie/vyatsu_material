@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=Soft I2C Advanced\Soft_I2C_Advanced.mcp51
+Project1=Soft I2C Simple\Soft_I2C_Simple.mcp51
+[ActiveProject]
+Index=0

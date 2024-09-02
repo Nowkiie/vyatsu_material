@@ -1,0 +1,21 @@
+[PROJECTS]
+Count=17
+Project0=Big8051\ADC On UART\Adc_On_Uart.mcp51
+Project1=Big8051\Button\Button.mcp51
+Project2=Big8051\Comparator\Comparator.mcp51
+Project3=Big8051\DAC\DAC.mcp51
+Project4=Big8051\EEPROM\SMBus_Simple.mcp51
+Project5=Big8051\GLCD\Glcd.mcp51
+Project6=Big8051\LCD\Lcd.mcp51
+Project7=Big8051\Led Blinking\LED_Blinking.mcp51
+Project8=Big8051\Led Blinking\LED_Curtain.mcp51
+Project9=Big8051\One Wire\One_Wire.mcp51
+Project10=Big8051\SerialFlash\Serial_Flash_example.mcp51
+Project11=Big8051\SerialRAM\SerialRAM.mcp51
+Project12=Big8051\Sound\Sound.mcp51
+Project13=Big8051\SPI Ethernet\SPI_Ethernet.mcp51
+Project14=Big8051\UART1\UART1.mcp51
+Project15=Big8051\UART2\UART2.mcp51
+Project16=Big8051\USB UART\USB_UART.mcp51
+[ActiveProject]
+Index=0

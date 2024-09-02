@@ -1,0 +1,13 @@
+<S7SEG>
+	<Attributes>
+		<Url/>
+		<Image/>
+		<File/>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>None</OnDblClick>
+		<OnMouseOver>None</OnMouseOver>
+	</Events>
+</S7SEG>

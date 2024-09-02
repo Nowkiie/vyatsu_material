@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=T6963C 240x128\T6963C_240x128.mcp51
+Project1=T6963C 240x64\T6963C_240x64.mcp51
+[ActiveProject]
+Index=0

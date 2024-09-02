@@ -1,0 +1,13 @@
+<SevenSegment>
+	<Attributes>
+		<Url/>
+		<Image>easy_8051_7seg_disp.jpg</Image>
+		<File/>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>None</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</SevenSegment>

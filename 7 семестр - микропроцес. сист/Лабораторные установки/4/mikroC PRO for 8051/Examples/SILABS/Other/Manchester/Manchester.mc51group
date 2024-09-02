@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=Receiver\Manchester_Receiver.mcp51
+Project1=Transmitter\Manchester_Transmitter.mcp51
+[ActiveProject]
+Index=0

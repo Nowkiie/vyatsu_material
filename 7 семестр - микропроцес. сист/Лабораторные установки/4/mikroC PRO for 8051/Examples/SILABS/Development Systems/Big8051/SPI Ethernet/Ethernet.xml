@@ -1,0 +1,13 @@
+<Ethernet>
+	<Attributes>
+		<Url></Url>
+		<Image>big_8051_seria_ethernet.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick></OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</Ethernet>

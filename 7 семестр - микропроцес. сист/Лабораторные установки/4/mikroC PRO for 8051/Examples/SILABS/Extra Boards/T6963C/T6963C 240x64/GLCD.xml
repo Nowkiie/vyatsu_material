@@ -1,0 +1,13 @@
+<GLCD>
+	<Attributes>
+		<Url>http://www.mikroe.com/add-on-boards/display/glcd-240x64-adapter/</Url>
+		<Image>GLCD T6963C 240x64 adapter.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick></OnLeftClick>
+		<OnRightClick></OnRightClick>
+		<OnDblClick>OpenUrl</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</GLCD>

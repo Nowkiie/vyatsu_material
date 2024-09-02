@@ -1,0 +1,13 @@
+<GLCD>
+	<Attributes>
+		<Url></Url>
+		<Image>easy_8051_glcd_128x64.jpg</Image>
+		<File></File>
+	</Attributes>
+	<Events>
+		<OnLeftClick>None</OnLeftClick>
+		<OnRightClick>None</OnRightClick>
+		<OnDblClick>None</OnDblClick>
+		<OnMouseOver>PreviewImage</OnMouseOver>
+	</Events>
+</GLCD>
