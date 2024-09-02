@@ -1,0 +1,56 @@
+object Form1: TForm1
+  Left = 565
+  Height = 240
+  Top = 130
+  Width = 320
+  Caption = 'Form1'
+  ClientHeight = 220
+  ClientWidth = 320
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '2.0.12.0'
+  object ColorBox1: TColorBox
+    Left = 24
+    Height = 22
+    Top = 40
+    Width = 100
+    Selected = clNavy
+    Style = [cbStandardColors, cbPrettyNames]
+    ItemHeight = 16
+    OnChange = ColorBox1Change
+    OnMouseUp = ColorBox1MouseUp
+    OnSelect = ColorBox1Change
+    TabOrder = 0
+  end
+  object ColorBox2: TColorBox
+    Left = 24
+    Height = 22
+    Top = 72
+    Width = 100
+    Style = [cbStandardColors, cbPrettyNames]
+    ItemHeight = 16
+    OnChange = ColorBox1Change
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 124
+    Height = 25
+    Top = 106
+    Width = 75
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 8
+    object MenuItem1: TMenuItem
+      Caption = 'Сохранить'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Открыть'
+      OnClick = MenuItem2Click
+    end
+  end
+end

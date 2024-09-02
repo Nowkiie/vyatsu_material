@@ -1,0 +1,213 @@
+object Form3: TForm3
+  Left = 229
+  Height = 500
+  Top = 112
+  Width = 320
+  AllowDropFiles = True
+  Caption = 'Customization'
+  ClientHeight = 500
+  ClientWidth = 320
+  OnCreate = FormCreate
+  LCLVersion = '2.0.12.0'
+  object Gen: TBitBtn
+    Left = 184
+    Height = 33
+    Top = 104
+    Width = 88
+    Caption = 'Autofit'
+    OnClick = GenClick
+    ParentShowHint = False
+    TabOrder = 0
+  end
+  object Prim: TButton
+    Left = 184
+    Height = 33
+    Top = 152
+    Width = 88
+    Caption = 'Apply'
+    OnClick = PrimClick
+    TabOrder = 1
+  end
+  object Ex: TButton
+    Left = 184
+    Height = 33
+    Top = 248
+    Width = 88
+    Caption = 'Exit'
+    OnClick = ExClick
+    TabOrder = 2
+  end
+  object ColorBox1: TColorBox
+    Left = 16
+    Height = 22
+    Top = 8
+    Width = 100
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox1Change
+    TabOrder = 3
+  end
+  object ColorBox2: TColorBox
+    Left = 16
+    Height = 22
+    Top = 40
+    Width = 100
+    Selected = clMaroon
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox2Change
+    TabOrder = 4
+  end
+  object ColorBox3: TColorBox
+    Left = 16
+    Height = 22
+    Top = 72
+    Width = 100
+    Selected = clGreen
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox3Change
+    TabOrder = 5
+  end
+  object ColorBox4: TColorBox
+    Left = 16
+    Height = 22
+    Top = 104
+    Width = 100
+    Selected = clOlive
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox4Change
+    TabOrder = 6
+  end
+  object ColorBox5: TColorBox
+    Left = 16
+    Height = 22
+    Top = 136
+    Width = 100
+    Selected = clNavy
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox5Change
+    TabOrder = 7
+  end
+  object ColorBox6: TColorBox
+    Left = 16
+    Height = 22
+    Top = 168
+    Width = 100
+    Selected = clPurple
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox6Change
+    TabOrder = 8
+  end
+  object ColorBox7: TColorBox
+    Left = 16
+    Height = 22
+    Top = 200
+    Width = 100
+    Selected = clTeal
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox7Change
+    TabOrder = 9
+  end
+  object ColorBox8: TColorBox
+    Left = 16
+    Height = 22
+    Top = 232
+    Width = 100
+    Selected = clGray
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox8Change
+    TabOrder = 10
+  end
+  object ColorBox9: TColorBox
+    Left = 16
+    Height = 22
+    Top = 264
+    Width = 100
+    Selected = clSilver
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox9Change
+    TabOrder = 11
+  end
+  object ColorBox10: TColorBox
+    Left = 16
+    Height = 22
+    Top = 296
+    Width = 100
+    Selected = clRed
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox10Change
+    TabOrder = 12
+  end
+  object ColorBox11: TColorBox
+    Left = 16
+    Height = 22
+    Top = 328
+    Width = 100
+    Selected = clLime
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox11Change
+    TabOrder = 13
+  end
+  object ColorBox12: TColorBox
+    Left = 16
+    Height = 22
+    Top = 360
+    Width = 100
+    Selected = clYellow
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox12Change
+    TabOrder = 14
+  end
+  object ColorBox13: TColorBox
+    Left = 16
+    Height = 22
+    Top = 392
+    Width = 100
+    Selected = clBlue
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox13Change
+    TabOrder = 15
+  end
+  object ColorBox14: TColorBox
+    Left = 16
+    Height = 22
+    Top = 424
+    Width = 100
+    Selected = clFuchsia
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox14Change
+    TabOrder = 16
+  end
+  object ColorBox15: TColorBox
+    Left = 16
+    Height = 22
+    Top = 456
+    Width = 100
+    Selected = clAqua
+    Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+    ItemHeight = 16
+    OnSelect = ColorBox15Change
+    TabOrder = 17
+  end
+  object Button1: TButton
+    Left = 184
+    Height = 33
+    Top = 200
+    Width = 88
+    Caption = 'Ок'
+    OnClick = Button1Click
+    TabOrder = 18
+  end
+end
