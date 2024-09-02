@@ -1,0 +1,415 @@
+	1. инициализация <__ctors_end>
+- Регистр sreg=0
+	eor r1, r1
+	out 0x3f, r1
+- загрузка адреса (самая последняя запись в SRAM)
+	ldi r28, 0xFF
+	ldi r29, 0x08
+- присовение адреса регистрам SPH, SPL
+	out 0x3e, r29
+	out 0x3d, r28
+
+	2. настройка регистров <__do_clear_bss>
+* нужно назначить регистрам область памяти
+- один регистр в SRAM
+	ldi r18, 0x01
+ - один в динамической памяти (там 32 - регистра)
+	ldi r26, 0x00
+- один регистр в SRAM 
+	ldi r27, 0x01
+* 01- адрес SRAM начианется с 1000
+  00 - 0000 начало памяти
+
+	3. проверка загрузки <.do_clear_bss_start>
+- проверить, что объем глобальных переменных не превышает 9 байт
+(скорее, проверить, что мы загружаемся из флеш памяти)
+* Объем динамической памяти 9 байт, там хранятся глобальные переменные
+	cpi r26, 0x09
+- проверить, что загружаемся из ОЗУ
+	cpc r27, r18 (тут проверка, что они равны)
+- если одно из условий не выполнено, уходим на цикл 
+	brne .-8
+- если же все нормально, то заходим в функцию main
+	call 0x2ba
+- если вообще все пошло не так (или окончание проги), то конец проги
+	jmp 0x398
+
+	4. переадресация прерывания <__bad_interupt>
+- уходим на 0 вектор прерывания (resert)
+	jmp 0
+
+	5. <digitalWrite>
+- функция, проверяющая есть ли на ПИНе возможность ШИМа
+	uint8_t timer = digitalPinToTimer(pin); 
+
+	ldi r30, 0xAE //загрузка адреса функции digitalPinToTimer
+	ldi r31, 0x00 //загрузка второй части адреса функции
+	lpm r18, Z /запись результата
+- функция переводит номер ПИНа на плате в номер ПИНа по даташиту
+	uint8_t bit = digitalPinToBitMask(pin);
+
+	ldi r30, 0x9A //загрузка адреса функции digitalPinToTimer
+	ldi r31, 0x00 //загрузка второй части адреса функции
+	lpm r25, Z /запись результата
+- функция переводит номер ПИНа в букву ПИНа по даташиту (PORTB, PORTC, PORTD)
+	uint8_t port = digitalPinToPort(pin);
+
+	ldi r30, 0x86 //загрузка адреса функции digitalPinToTimer
+	ldi r31, 0x00 //загрузка второй части адреса функции
+	lpm r30, Z /запись результата
+ - создаем указатель
+	volatile uint8_t *out;
+- проверка наличия порта (PORTX - такого не существует, то ничего не делаем)
+	if (port == NOT_A_PIN) return;
+	
+	and r30, r30 
+	breq .+50
+- если у ПИНа нет ШИМа, то функция не поключается
+	if (timer != NOT_ON_TIMER) turnOffPWM(timer);
+	
+	and r18, r18
+	breq .+14
+- присвоение полученного ранее адреса  указателю
+* у нас название порта написано, как PB, а эта функция фозвращает PORTB
+	out = portOutputRegister(port);
+
+	ldi	r31, 0x00	; 0
+ 	add	r30, r30 
+ 	adc	r31, r31
+ 	subi	r30, 0x8E	; 142
+	sbci	r31, 0xFF	; 255
+	lpm	r26, Z+
+	lpm	r27, Z
+
+- копирование регистра состояния (SREG)
+	uint8_t oldSREG = SREG;
+	
+	in r18, 0x3f
+- отключаем прерывания с помощью cli()
+	cli
+- подготавливаем регитср - записываем в регистр сосстояние
+	ld r30, X
+- проверяем чему равно значение
+	cpse r24, r1
+	rjmp .+76 
+- настраиваем регистр
+	com r25 //это инверсия
+- *out &= ~bit;
+	and r25, r30
+- *out |= bit;
+	or r25, r30
+- снова прыжок
+	rjmp	.-76 
+- сохранение результата
+ 	st	X, r25
+- возвращаем регистру состояний то, что было
+	out	0x3f, r18
+- конец
+	ret
+
+	6. turnOffPWN
+Не поняла, как они распределили
+
+	7.  <micros>
+- копия значений регистра флагов (SREG) - запоминаем, были ли включены прерывания
+	in r19, 0x3f
+- отключаем прерывания
+	cli
+- загружаем вектора прерывания переполнения таймера
+	m = timer0_overflow_count; //счет переполнения
+
+	lds r24, 0x0105 //1байт 
+	lds r25, 0x0106 //2 байт
+	lds r26, 0x0107//3 байт
+	lds r27, 0x0108//4 байт - потому что тип long
+
+- записываем вектор прерывания (TCNT0 - регистр таймер-счетчика)
+	t=TCNT0 //считать содержимое счетного регистра
+
+	in r18, 0x26
+- проверка
+	if ((TIFR0 & _BV(TOV0)) && (t < 255))
+
+	sbis	0x15, 0	; 21 //пропустить следующую команду, если устанволен бит 0 в 21 разряде (по факту нам нужно посмотреть 0 бит, там записан флаг переполнения счетчика таймера)
+	rjmp	.+10 
+	cpi	r18, 0xFF (сравниваем с 255)
+	breq	.+6 
+- m++ - инкремент по переполнению
+	adiw	r24, 0x01 (+1)
+	adc	r26, r1 (если переполнение, то учитываем это)
+	adc	r27, r1 (если переполнение, то учитываем это)
+- восстанавливаем значение регитсра состтояний
+	out	0x3f, r19
+
+- возвращаем значение m, которое тут же вычисляем
+	return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
+	
+	mov	r27, r26 //пересылка - сдвиг
+	mov	r26, r25
+	mov	r25, r24
+	eor	r24, r24 //очистить r24
+	movw	r22, r24 //объединяем - для того, чтобы выдать, как одно число, а не 
+	movw	r24, r26
+	add	r22, r18 //складываем с t
+	adc	r23, r1 //если переполнение, то учитываем
+	adc	r24, r1
+	adc	r25, r1
+	ldi	r20, 0x02 //2
+	add	r22, r22 //сложить
+	adc	r23, r23
+	adc	r24, r24
+	adc	r25, r25
+	dec	r20 //типо делаем умножение на 4
+	brne	.-12 //если не ноль, то снова складываем
+- конец
+	ret
+
+	8. delay
+- все закидываем в стек
+	push	r8
+	push	r9
+	push	r10
+	push	r11
+	push	r12
+	push	r13
+	push	r14
+	push	r15
+- вызываем функцию micros
+	call	0x170
+- запись
+	uint32_t start = micros();
+
+	movw	r8, r22
+	movw	r10, r24
+	
+	ldi	r24, 0xF4
+	mov	r12, r24
+	eor	r13, r13
+	inc	r13
+	mov	r14, r1
+	mov	r15, r1
+- while (ms>0 && (micros() - start) >= 1000)
+	call	0x170	; 0x170 <micros>
+
+ 	sub	r22, r8 // вычитаем старт
+	sbc	r23, r9
+	sbc	r24, r10
+	sbc	r25, r11
+	cpi	r22, 0xE8	; 232 //-1000
+	sbci	r23, 0x03	; 3
+	cpc	r24, r1
+	cpc	r25, r1
+	brcs	.-22 //проверяем на не ноль
+	
+- ms--
+	ldi	r18, 0x01	; 1
+	sub	r12, r18
+	sbc	r13, r1
+	sbc	r14, r1
+      	sbc	r15, r1
+- start+=1000
+	ldi	r24, 0xE8	; 232
+       	add	r8, r24
+       	ldi	r24, 0x03	; 3
+       	adc	r9, r24
+       	adc	r10, r1
+      	adc	r11, r1
+- while (ms>0)
+	cp	r12, r1
+        	cpc	r13, r1
+       	cpc	r14, r1
+       	cpc	r15, r1
+      	brne	.-54  
+- возвращение из стека
+	pop	r15
+	pop	r14
+	pop	r13
+	pop	r12
+	pop	r11
+	pop	r10
+	pop	r9
+	pop	r8
+	ret
+
+	9. вектор прерывания по переполнению
+- все бросаем в стек
+	push	r1
+       	push	r0
+       	in	r0, 0x3f	; 63
+       	push	r0
+      	eor	r1, r1
+       	push	r18
+       	push	r19
+       	push	r24
+       	push	r25
+       	push	r26
+       	push	r27
+- unsigned long m = timer0_millis;
+	lds	r24, 0x0101	; 0x800101 <timer0_millis>
+	lds	r25, 0x0102	; 0x800102 <timer0_millis+0x1>
+	lds	r26, 0x0103	; 0x800103 <timer0_millis+0x2>
+	lds	r27, 0x0104	; 0x800104 <timer0_millis+0x3>
+- unsigned char f = timer0_fract;
+	lds	r19, 0x0100	; 0x800100 <_edata>
+- f += FRACT_INC;
+	ldi	r18, 0x03	; 3
+	add	r18, r19
+- if (f >= FRACT_MAX) 
+	cpi	r18, 0x7D
+	brcc	.+86 (тыц)
+- m += MILLIS_INC;
+	adiw	r24, 0x01	; 1
+	adc	r26, r1
+	adc	r27, r1
+- timer0_fract = f;
+	sts	0x0100, r18	; 0x800100 <_edata>
+-timer0_millis = m;
+	sts	0x0101, r24	; 0x800101 <timer0_millis>
+	sts	0x0102, r25	; 0x800102 <timer0_millis+0x1>
+	sts	0x0103, r26	; 0x800103 <timer0_millis+0x2>
+	sts	0x0104, r27	; 0x800104 <timer0_millis+0x3>
+- timer0_overflow_count++;
+	lds	r24, 0x0105	; 0x800105 <timer0_overflow_count>
+	lds	r25, 0x0106	; 0x800106 <timer0_overflow_count+0x1>
+	lds	r26, 0x0107	; 0x800107 <timer0_overflow_count+0x2>
+	lds	r27, 0x0108	; 0x800108 <timer0_overflow_count+0x3>
+	adiw	r24, 0x01	; 1
+	adc	r26, r1
+	adc	r27, r1
+	sts	0x0105, r24	; 0x800105 <timer0_overflow_count>
+	sts	0x0106, r25	; 0x800106 <timer0_overflow_count+0x1>
+	sts	0x0107, r26	; 0x800107 <timer0_overflow_count+0x2>
+	sts	0x0108, r27	; 0x800108 <timer0_overflow_count+0x3>
+- возвращаем значения из стека
+	pop	r27
+       	pop	r26
+       	pop	r25
+       	pop	r24
+       	pop	r19
+      	pop	r18
+       	pop	r0
+       	out	0x3f, r0	; 63
+       	pop	r0
+       	pop	r1
+      	reti
+- (тыц) -f -= FRACT_MAX;
+	ldi	r18, 0x86	; 134
+	add	r18, r19
+- m += 1;
+	adiw	r24, 0x02	; 2
+	adc	r26, r1
+	adc	r27, r1
+	rjmp	.-92 
+
+	10. init
+- sei
+	sei
+- подрубаем вектора прерывания по таймеру для разных архитектур
+	sbi(TCCR0A, WGM01);
+ 2bc:	84 b5       	in	r24, 0x24	; 36
+ 2be:	82 60       	ori	r24, 0x02	; 2
+ 2c0:	84 bd       	out	0x24, r24	; 36
+
+
+	sbi(TCCR0A, WGM00);
+ 2c2:	84 b5       	in	r24, 0x24	; 36
+ 2c4:	81 60       	ori	r24, 0x01	; 1
+ 2c6:	84 bd       	out	0x24, r24	; 36
+
+	sbi(TCCR0B, CS01);
+ 2c8:	85 b5       	in	r24, 0x25	; 37
+ 2ca:	82 60       	ori	r24, 0x02	; 2
+ 2cc:	85 bd       	out	0x25, r24	; 37
+	
+	sbi(TCCR0B, CS00);
+ 2ce:	85 b5       	in	r24, 0x25	; 37
+ 2d0:	81 60       	ori	r24, 0x01	; 1
+ 2d2:	85 bd       	out	0x25, r24	; 37
+
+	sbi(TIMSK0, TOIE0);
+ 2d4:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <__DATA_REGION_ORIGIN__+0xe>
+ 2d8:	81 60       	ori	r24, 0x01	; 1
+ 2da:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__DATA_REGION_ORIGIN__+0xe>
+
+	TCCR1B = 0;
+ 2de:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+
+	sbi(TCCR1B, CS11);
+ 2e2:	80 91 81 00 	lds	r24, 0x0081	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+ 2e6:	82 60       	ori	r24, 0x02	; 2
+ 2e8:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+
+	sbi(TCCR1B, CS10);
+ 2ec:	80 91 81 00 	lds	r24, 0x0081	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+ 2f0:	81 60       	ori	r24, 0x01	; 1
+ 2f2:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+
+	sbi(TCCR1A, WGM10);
+ 2f6:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <__DATA_REGION_ORIGIN__+0x20>
+ 2fa:	81 60       	ori	r24, 0x01	; 1
+ 2fc:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__DATA_REGION_ORIGIN__+0x20>
+
+	sbi(TCCR2B, CS22);
+ 300:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <__DATA_REGION_ORIGIN__+0x51>
+ 304:	84 60       	ori	r24, 0x04	; 4
+ 306:	80 93 b1 00 	sts	0x00B1, r24	; 0x8000b1 <__DATA_REGION_ORIGIN__+0x51>
+
+	sbi(TCCR2A, WGM20);
+ 30a:	80 91 b0 00 	lds	r24, 0x00B0	; 0x8000b0 <__DATA_REGION_ORIGIN__+0x50>
+ 30e:	81 60       	ori	r24, 0x01	; 1
+ 310:	80 93 b0 00 	sts	0x00B0, r24	; 0x8000b0 <__DATA_REGION_ORIGIN__+0x50>
+
+	sbi(ADCSRA, ADPS2);
+ 314:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+ 318:	84 60       	ori	r24, 0x04	; 4
+ 31a:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+
+	sbi(ADCSRA, ADPS1);
+ 31e:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+ 322:	82 60       	ori	r24, 0x02	; 2
+ 324:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+
+	sbi(ADCSRA, ADPS0);
+ 328:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+ 32c:	81 60       	ori	r24, 0x01	; 1
+ 32e:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+
+	sbi(ADCSRA, ADEN);
+ 332:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+ 336:	80 68       	ori	r24, 0x80	; 128
+ 338:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+
+	UCSR0B = 0;
+ 33c:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+
+	11. PinMode
++/- также, как и в digitalWrite
+
+	12. основная прога
+376:	c0 e0       	ldi	r28, 0x00	; 0
+ 378:	d0 e0       	ldi	r29, 0x00	; 0
+
+digitalWrite(10,HIGH);
+ 37a:	81 e0       	ldi	r24, 0x01	; 1
+ 37c:	0e 94 70 00 	call	0xe0	; 0xe0 <digitalWrite.constprop.0>
+delay(500);
+ 380:	0e 94 dd 00 	call	0x1ba	; 0x1ba <delay.constprop.1>
+digitalWrite(10,LOW);
+ 384:	80 e0       	ldi	r24, 0x00	; 0
+ 386:	0e 94 70 00 	call	0xe0	; 0xe0 <digitalWrite.constprop.0>
+delay(500);
+ 38a:	0e 94 dd 00 	call	0x1ba	; 0x1ba <delay.constprop.1>
+ 38e:	20 97       	sbiw	r28, 0x00	; 0
+ 390:	a1 f3       	breq	.-24     	; 0x37a <main+0xc0>
+ 392:	0e 94 00 00 	call	0	; 0x0 <__vectors>
+ 396:	f1 cf       	rjmp	.-30     	; 0x37a <main+0xc0>
+
+00000398 <_exit>:
+ 398:	f8 94       	cli
+
+0000039a <__stop_program>:
+ 39a:	ff cf       	rjmp	.-2      	; 0x39a <__stop_program>
+
+
+
+

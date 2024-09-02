@@ -1,0 +1,20 @@
+<code> := определить <define> <code> | <proc> <code> | e
+<define> := <macros> н <preproc> к
+<macros>:= <name> | <name> ( <parametr>    
+<name> := идентификатор
+<parametr> := <value>  | <value><parametr> | )
+<value> := идентификатор | число
+<preproc> := -<value> | <value>
+<proc>:=<name> н <proc_code> | <name> (<parametr> н  <proc_code>
+<proc_code> := <operation> к | <operation><proc_code>
+<operation>:=<action> | <metka> | вернуть | переход <name>| конец | если <if_statment> | иначе <else_statment>
+<action>:= <name> | <name> (<operation> | <name> () | <name> = <value>| <name>=<name>() | <name>=<name>(<parametr>| <name> <op> <value>
+<op>:=И | ИЛИ | НЕ | * | - | + | / | >> | <<
+<if_statment> := ( <condition> н <if_code>
+<condition> := <first_cond> <op2><condition> | <first_cond>
+<first_cond> := <name> <op3><value>
+<op2>:= И | ИЛИ
+<op3>:= И | ИЛИ | == | !=
+<else_statment> :=  н <else_code>
+<else_code> := <operation> к | <operation><else_code>
+<if_code> := <operation> к | <operation><if_code>
